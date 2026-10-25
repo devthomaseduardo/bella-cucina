@@ -117,6 +117,8 @@ docs/                     documentação técnica e de operação
 | Documento | Para quem |
 |-----------|-----------|
 | [Arquitetura](docs/arquitetura.md) | Devs: visão geral, fluxos e decisões |
+| [Guia de design](docs/design-system.md) | Devs e designers: decisões visuais do Bella Cucina |
+| [Modelo de guia de design](docs/templates/guia-de-design.md) | Qualquer projeto: regras universais de UX, acessibilidade e como não parecer feito por IA |
 | [Banco de dados](docs/banco-de-dados.md) | Devs: tabelas, funções e regras de acesso |
 | [Setup local](docs/setup-local.md) | Devs: subir o ambiente completo com Supabase |
 | [Operação](docs/operacao.md) | Restaurante: como a equipe usa o sistema |
