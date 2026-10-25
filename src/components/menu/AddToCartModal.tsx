@@ -13,6 +13,7 @@ import { Minus, Plus } from "lucide-react";
 import { useCart } from "../cart/CartContext";
 import { useI18n } from "@/i18n/I18nProvider";
 import { getMenuItemDetails } from "@/data/menu-item-details";
+import { formatPrice } from "@/lib/format";
 
 interface AddToCartModalProps {
   open: boolean;
@@ -24,7 +25,6 @@ interface AddToCartModalProps {
     price: number;
     image: string;
     category: string;
-    rating?: number;
   };
 }
 
@@ -94,7 +94,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                       {item.name}
                     </h3>
                   </div>
-                  <p className="font-display text-2xl text-primary">R$ {item.price.toFixed(2)}</p>
+                  <p className="font-display text-2xl text-primary">{formatPrice(item.price)}</p>
                 </div>
 
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.description}</p>
@@ -212,7 +212,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
               <div className="flex items-center justify-between border-t border-white/10 pt-4">
                 <span className="font-medium">{t("addToCart.total")}</span>
                 <span className="font-display text-2xl text-primary">
-                  R$ {(item.price * quantity).toFixed(2)}
+                  {formatPrice((item.price * quantity))}
                 </span>
               </div>
             </div>

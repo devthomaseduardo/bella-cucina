@@ -40,7 +40,7 @@ const HeroSection = ({
           src={backgroundImage}
           alt=""
           className="h-full w-full object-cover object-[center_30%]"
-          fetchPriority="high"
+          {...{ fetchpriority: "high" }}
         />
         <div
           className="absolute inset-0 bg-[linear-gradient(180deg,rgba(10,7,5,0.55)_0%,rgba(10,7,5,0.25)_35%,rgba(10,7,5,0.92)_78%,#0a0705_100%)]"

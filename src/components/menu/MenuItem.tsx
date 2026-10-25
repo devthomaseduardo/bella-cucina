@@ -5,6 +5,7 @@ import { useI18n } from "@/i18n/I18nProvider";
 import { motion } from "framer-motion";
 import { Plus } from "lucide-react";
 import { getMenuItemDetails } from "@/data/menu-item-details";
+import { formatPrice } from "@/lib/format";
 
 interface MenuItemProps {
   id: string;
@@ -13,12 +14,6 @@ interface MenuItemProps {
   price: number;
   image: string;
   category: string;
-  rating?: number;
-}
-
-function getStableRating(id: string) {
-  const seed = id.split("").reduce((total, char) => total + char.charCodeAt(0), 0);
-  return 4.4 + (seed % 7) * 0.08;
 }
 
 const MenuItem = ({
@@ -28,13 +23,11 @@ const MenuItem = ({
   price = 0,
   image,
   category,
-  rating: initialRating,
   className,
 }: MenuItemProps & { className?: string }) => {
   const { t } = useI18n();
   const [isModalOpen, setIsModalOpen] = React.useState(false);
 
-  const rating = React.useMemo(() => initialRating ?? getStableRating(id), [id, initialRating]);
   const categoryLabel = t(`menu.category.${category}`);
   const details = getMenuItemDetails(id);
 
@@ -70,19 +63,12 @@ const MenuItem = ({
               <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/72">
                 {categoryLabel}
               </span>
-              <span className="font-display text-2xl text-white">R$ {price.toFixed(2)}</span>
+              <span className="font-display text-2xl text-white">{formatPrice(price)}</span>
             </div>
           </div>
 
           <div className="flex flex-1 flex-col p-5">
-            <div className="flex items-start justify-between gap-4">
-              <h3 className="max-w-[14ch] font-display text-2xl leading-tight text-foreground">
-                {name}
-              </h3>
-              <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.16em] text-primary">
-                {rating.toFixed(1)} / 5
-              </span>
-            </div>
+            <h3 className="font-display text-2xl leading-tight text-foreground">{name}</h3>
 
             <p className="mt-3 line-clamp-3 flex-1 text-sm leading-6 text-muted-foreground">
               {description}
@@ -132,7 +118,7 @@ const MenuItem = ({
       <AddToCartModal
         open={isModalOpen}
         onOpenChange={setIsModalOpen}
-        item={{ id, name, description, price, image, category, rating }}
+        item={{ id, name, description, price, image, category }}
       />
     </>
   );

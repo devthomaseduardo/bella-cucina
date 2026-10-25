@@ -17,6 +17,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Label } from "@/components/ui/label";
 import { getMenuItemDetails } from "@/data/menu-item-details";
 import { getTableTokenFromUrl } from "@/lib/table-session";
+import { formatPrice } from "@/lib/format";
 
 interface CartModalProps {
   open: boolean;
@@ -171,7 +172,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                                   </p>
                                 </div>
                                 <p className="shrink-0 text-sm font-semibold text-primary">
-                                  R$ {(item.price * item.quantity).toFixed(2)}
+                                  {formatPrice((item.price * item.quantity))}
                                 </p>
                               </div>
 
@@ -216,7 +217,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                         {submittedItems.reduce((sum, item) => sum + item.quantity, 0)} itens enviados
                       </p>
                     </div>
-                    <p className="font-display text-3xl text-foreground">R$ {submittedTotal.toFixed(2)}</p>
+                    <p className="font-display text-3xl text-foreground">{formatPrice(submittedTotal)}</p>
                   </div>
                 </div>
               </div>
@@ -303,7 +304,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                                 <div>
                                   <h4 className="font-medium text-foreground">{item.name}</h4>
                                   <p className="mt-1 text-xs text-muted-foreground">
-                                    R$ {item.price.toFixed(2)}
+                                    {formatPrice(item.price)}
                                     {item.customerName ? ` · Para ${item.customerName}` : ""}
                                   </p>
                                 </div>
@@ -380,7 +381,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                       <p className="text-xs text-muted-foreground">{totalItems} itens</p>
                       <p className="text-sm font-medium">Total</p>
                     </div>
-                    <span className="font-display text-3xl">R$ {totalPrice.toFixed(2)}</span>
+                    <span className="font-display text-3xl">{formatPrice(totalPrice)}</span>
                   </div>
                   <DialogFooter className="flex-col gap-2 sm:flex-col">
                     <Button onClick={handleCheckout} className="w-full rounded-full" disabled={isSubmitting}>

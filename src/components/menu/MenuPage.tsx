@@ -11,7 +11,6 @@ const MenuPageContent = () => {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-hidden bg-background">
       <StickySiteNav />
-      <FloatingActions showWaiterAction={false} />
 
       <main className="min-w-0 pt-20 sm:pt-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -35,6 +34,8 @@ const MenuPageContent = () => {
         phone="(11) 1234-5678"
         email="contato@bellacucina.com"
       />
+
+      <FloatingActions showWaiterAction={false} />
     </div>
   );
 };

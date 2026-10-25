@@ -37,7 +37,7 @@ const LanguageSelectPage = () => {
           src={HERO_BG}
           alt=""
           className="h-full w-full object-cover object-center"
-          fetchPriority="high"
+          {...{ fetchpriority: "high" }}
         />
         <div
           className="absolute inset-0 bg-[linear-gradient(105deg,rgba(8,6,4,0.94)_0%,rgba(8,6,4,0.72)_48%,rgba(8,6,4,0.88)_100%)]"

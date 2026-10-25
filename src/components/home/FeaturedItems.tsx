@@ -11,6 +11,7 @@ import {
 import { useI18n } from "@/i18n/I18nProvider";
 import { FEATURED_HIGHLIGHT_ITEMS } from "@/data/italian-menu";
 import { useNavigate } from "react-router-dom";
+import { formatPrice } from "@/lib/format";
 
 interface FeaturedItem {
   id: string;
@@ -18,7 +19,6 @@ interface FeaturedItem {
   description: string;
   image: string;
   price: number;
-  rating?: number;
   category: string;
 }
 
@@ -28,10 +28,7 @@ interface FeaturedItemsProps {
   subtitle?: string;
 }
 
-const DEFAULT_FEATURED: FeaturedItem[] = FEATURED_HIGHLIGHT_ITEMS.map((item, i) => ({
-  ...item,
-  rating: Number((4.55 + (i % 6) * 0.07).toFixed(2)),
-}));
+const DEFAULT_FEATURED: FeaturedItem[] = FEATURED_HIGHLIGHT_ITEMS;
 
 const FeaturedItems = ({ items = DEFAULT_FEATURED, title, subtitle }: FeaturedItemsProps) => {
   const { t } = useI18n();
@@ -96,19 +93,14 @@ const FeaturedItems = ({ items = DEFAULT_FEATURED, title, subtitle }: FeaturedIt
                         <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/72">
                           {t(`menu.category.${item.category}`)}
                         </span>
-                        <span className="font-display text-2xl text-white">R$ {item.price.toFixed(2)}</span>
+                        <span className="font-display text-2xl text-white">{formatPrice(item.price)}</span>
                       </div>
                     </div>
 
                     <div className="flex min-h-[12rem] flex-col p-5 sm:min-h-[13rem] sm:p-6">
-                      <div className="flex items-start justify-between gap-4">
-                        <h3 className="max-w-[13ch] font-display text-2xl leading-tight text-foreground sm:text-3xl">
-                          {item.name}
-                        </h3>
-                        <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
-                          {(item.rating ?? 4.8).toFixed(1)} / 5
-                        </span>
-                      </div>
+                      <h3 className="font-display text-2xl leading-tight text-foreground sm:text-3xl">
+                        {item.name}
+                      </h3>
 
                       <p className="mt-3 line-clamp-3 text-sm leading-6 text-muted-foreground">
                         {item.description}

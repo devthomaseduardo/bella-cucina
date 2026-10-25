@@ -42,7 +42,6 @@ const HomePageContent = () => {
         />
       )}
 
-      <FloatingActions showWaiterAction={false} />
       <StickySiteNav />
 
       <main className="min-w-0 pt-0">
@@ -262,6 +261,8 @@ const HomePageContent = () => {
         phone="(11) 1234-5678"
         email="contato@bellacucina.com"
       />
+
+      <FloatingActions showWaiterAction={false} />
     </div>
   );
 };
