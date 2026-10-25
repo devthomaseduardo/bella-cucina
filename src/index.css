@@ -73,6 +73,51 @@
 }
 
 @layer utilities {
+  /*
+   * Section moods. Each one redefines the theme tokens locally, so components
+   * using bg-background / text-foreground / text-muted-foreground adapt.
+   */
+  .section-wine {
+    --background: 350 38% 13%;
+    --muted: 350 30% 18%;
+    --muted-foreground: 30 28% 80%;
+    --border: 350 24% 26%;
+    background:
+      radial-gradient(ellipse at 15% 0%, hsl(7 70% 40% / 0.25), transparent 55%),
+      hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  .section-cream {
+    --background: 38 42% 92%;
+    --foreground: 18 30% 10%;
+    --card: 36 34% 88%;
+    --card-foreground: 18 30% 10%;
+    --muted: 36 30% 86%;
+    --muted-foreground: 20 14% 32%;
+    --border: 30 22% 78%;
+    --primary: 7 72% 44%;
+    --accent: 24 72% 36%;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  /* Subtle film grain so large dark/cream areas don't look flat. */
+  .grain {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    opacity: 0.07;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
   .font-display {
     font-family: var(--font-serif);
     letter-spacing: 0;

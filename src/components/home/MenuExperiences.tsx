@@ -37,9 +37,8 @@ export function MenuExperiences() {
   return (
     <section
       id="esperienze"
-      className="relative scroll-mt-24 overflow-hidden border-y border-white/10 bg-muted/30 py-16 md:py-24"
+      className="section-wine grain relative scroll-mt-24 overflow-hidden py-16 md:py-24"
     >
-      <div className="absolute inset-0 bella-grid-bg opacity-25" aria-hidden />
       <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}
@@ -60,7 +59,7 @@ export function MenuExperiences() {
         </motion.div>
 
         {/* Phones: horizontal snap carousel; desktop: three-column grid. */}
-        <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:px-0 md:mt-10 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
+        <div className="-mx-4 mt-8 flex snap-x snap-mandatory scroll-px-4 gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:px-0 md:mt-10 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
           {cards.map((c, index) => (
               <motion.button
               key={c.key}
@@ -89,7 +88,7 @@ export function MenuExperiences() {
                   loading="lazy"
                 />
                   <div className={cn("absolute inset-0 bg-gradient-to-t via-black/36 to-black/12", c.accent)} />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/86 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/55 to-black/5" />
               </div>
 
                 <div className="relative z-10 flex h-full min-h-[22rem] flex-col justify-between p-5 sm:p-6 md:min-h-[26rem]">

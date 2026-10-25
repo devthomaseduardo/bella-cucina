@@ -10,7 +10,7 @@ export function ChefBrigadeSection() {
   const shouldReduceMotion = useReducedMotion();
 
   return (
-    <section id="cucina" className="relative scroll-mt-24 overflow-hidden bg-background py-16 md:py-24">
+    <section id="cucina" className="section-cream grain relative scroll-mt-24 overflow-hidden py-16 md:py-24">
       <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <motion.div
@@ -20,7 +20,7 @@ export function ChefBrigadeSection() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="relative lg:col-span-5"
           >
-            <div className="relative overflow-hidden rounded-[1.75rem] border border-white/10 bg-white/[0.045] shadow-[0_24px_90px_-56px_rgba(0,0,0,0.9)]">
+            <div className="relative overflow-hidden rounded-[1.75rem] shadow-[0_30px_80px_-40px_rgba(40,20,10,0.55)]">
               <img
                 src={CHEF_IMG}
                 alt={t("chef.imageChefAlt")}
@@ -41,7 +41,7 @@ export function ChefBrigadeSection() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
-            <p className="inline-flex rounded-full border border-white/10 bg-white/[0.045] px-3 py-1 text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
+            <p className="inline-flex rounded-full border border-border px-3 py-1 text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
               {t("chef.kicker")}
             </p>
             <h2 className="mt-4 max-w-3xl font-display text-3xl text-foreground sm:text-4xl md:text-5xl">
@@ -68,7 +68,7 @@ export function ChefBrigadeSection() {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-white/10 pt-6">
+            <div className="mt-8 border-t border-border pt-6">
               <h3 className="font-display text-xl text-foreground">{t("chef.valuesTitle")}</h3>
               <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-muted-foreground sm:grid-cols-3">
                 {(["value1", "value2", "value3"] as const).map((key, index) => (
