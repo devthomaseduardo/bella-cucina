@@ -205,13 +205,13 @@ export default function AccountModal({ open, onOpenChange }: AccountModalProps) 
           <div className="space-y-6">
             <div className="grid grid-cols-2 gap-3">
               <div className="rounded-2xl bg-primary p-4 text-primary-foreground">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] opacity-70">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] opacity-70">
                   Minha parte
                 </p>
                 <p className="mt-2 font-display text-3xl">{money(myTotal)}</p>
               </div>
               <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-4">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                   Total da mesa
                 </p>
                 <p className="mt-2 font-display text-3xl text-foreground">
@@ -227,7 +227,6 @@ export default function AccountModal({ open, onOpenChange }: AccountModalProps) 
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="h-8 rounded-full text-xs"
                   onClick={() => void refresh()}
                   disabled={loading}
                 >
@@ -308,7 +307,7 @@ export default function AccountModal({ open, onOpenChange }: AccountModalProps) 
               )}
             </section>
 
-            <p className="text-center text-[11px] text-muted-foreground">
+            <p className="text-center text-xs text-muted-foreground">
               {updatedAt
                 ? `Atualizado às ${updatedAt.toLocaleTimeString("pt-BR", {
                     hour: "2-digit",

@@ -88,10 +88,10 @@ function SalonBoard() {
 
   return (
     <main className="min-h-screen bg-background px-4 py-6 text-foreground sm:px-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-screen-2xl">
         <header className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
               Operação
             </p>
             <h2 className="mt-2 font-display text-4xl sm:text-5xl">Salão</h2>
@@ -109,7 +109,7 @@ function SalonBoard() {
 
         <section>
           <div className="mb-4">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
               Saída da cozinha
             </p>
             <h3 className="mt-1 font-display text-2xl">Prontos para levar</h3>
@@ -145,7 +145,7 @@ function SalonBoard() {
 
                   <div className="mt-5 grid grid-cols-2 gap-3">
                     <div className="rounded-2xl bg-black/20 p-4">
-                      <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      <p className="flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] text-muted-foreground">
                         <MapPin className="h-3.5 w-3.5" /> Mesa
                       </p>
                       <p className="mt-1 text-2xl font-semibold">
@@ -153,7 +153,7 @@ function SalonBoard() {
                       </p>
                     </div>
                     <div className="rounded-2xl bg-black/20 p-4">
-                      <p className="flex items-center gap-1.5 text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                      <p className="flex items-center gap-1.5 text-xs uppercase tracking-[0.16em] text-muted-foreground">
                         <UserRound className="h-3.5 w-3.5" /> Pessoa
                       </p>
                       <p className="mt-1 truncate text-lg font-semibold">
@@ -169,7 +169,7 @@ function SalonBoard() {
                   )}
 
                   <Button
-                    className="mt-5 w-full rounded-full"
+                    className="mt-5 w-full"
                     onClick={() => void markDelivered(item)}
                   >
                     Marcar como entregue

@@ -16,7 +16,7 @@ const SECTION_LINKS = [
   { href: "#", key: "home" as const },
   { href: "/cardapio", key: "menu" as const },
   { href: "#reservations", key: "reservations" as const },
-  { href: "#about", key: "about" as const },
+  { href: "#cucina", key: "about" as const },
   { href: "#contact", key: "contact" as const },
 ];
 
@@ -64,7 +64,7 @@ export function StickySiteNav() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-[max(0.55rem,env(safe-area-inset-top))] sm:px-4">
-      <div className="pointer-events-auto mx-auto max-w-7xl">
+      <div className="pointer-events-auto mx-auto max-w-screen-2xl">
         <div
           className={cn(
             "flex h-12 items-center justify-between transition-all duration-300 md:hidden",
@@ -83,7 +83,7 @@ export function StickySiteNav() {
             <button
               type="button"
               onClick={() => go("/cardapio")}
-              className="hidden text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 min-[390px]:block"
+              className="hidden px-2 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/70 min-[390px]:block"
             >
               Cardápio
             </button>
@@ -94,7 +94,7 @@ export function StickySiteNav() {
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 rounded-full bg-white/10 text-white hover:bg-white/15 hover:text-white"
+                  className="bg-white/10 text-white hover:bg-white/15 hover:text-white"
                   aria-label={t("nav.openMenu")}
                 >
                   {mobileOpen ? <X className="h-[18px] w-[18px]" aria-hidden /> : <Menu className="h-[18px] w-[18px]" aria-hidden />}

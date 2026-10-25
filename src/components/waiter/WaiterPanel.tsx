@@ -25,6 +25,7 @@
   import { useCart, Order } from "../cart/CartContext";
   import QrScannerDialog from "./QrScannerDialog";
   import { supabase } from "@/lib/supabase";
+  import { formatPrice } from "@/lib/format";
 
   interface WaiterPanelProps {
     open: boolean;
@@ -407,7 +408,7 @@
                                   </span>
                                   <span className="ml-2">{item.name}</span>
                                   {item.customerName && (
-                                    <span className="ml-2 text-[10px] bg-muted px-1.5 py-0.5 rounded text-muted-foreground uppercase tracking-wider font-bold">
+                                    <span className="ml-2 text-xs bg-muted px-1.5 py-0.5 rounded text-muted-foreground uppercase tracking-wider font-bold">
                                       {item.customerName}
                                     </span>
                                   )}
@@ -419,7 +420,7 @@
                                 )}
                               </div>
                               <span className="text-muted-foreground">
-                                R$ {(item.price * item.quantity).toFixed(2)}
+                                {formatPrice((item.price * item.quantity))}
                               </span>
                             </div>
                           ))}
@@ -427,7 +428,7 @@
 
                         <div className="flex justify-between items-center mt-4 pt-3 border-t">
                           <span className="font-medium">
-                            Total: R$ {order.totalPrice.toFixed(2)}
+                            Total: {formatPrice(order.totalPrice)}
                           </span>
                           <div className="flex space-x-2">
                             {order.status === "pending" && (
@@ -515,7 +516,7 @@
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-8 w-8"
                             onClick={() =>
                               handleUpdateItemQuantity(item.id, item.quantity - 1)
                             }
@@ -526,7 +527,7 @@
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-8 w-8"
                             onClick={() =>
                               handleUpdateItemQuantity(item.id, item.quantity + 1)
                             }
@@ -544,7 +545,7 @@
                         />
                       </div>
                       <p className="text-muted-foreground">
-                        R$ {(item.price * item.quantity).toFixed(2)}
+                        {formatPrice((item.price * item.quantity))}
                       </p>
                     </div>
                   ))}
@@ -553,7 +554,7 @@
                 <div className="flex justify-between items-center pt-2">
                   <span className="font-medium">Total:</span>
                   <span className="font-medium">
-                    R$ {editingOrder.totalPrice.toFixed(2)}
+                    {formatPrice(editingOrder.totalPrice)}
                   </span>
                 </div>
 

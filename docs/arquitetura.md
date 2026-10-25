@@ -19,7 +19,7 @@ O Bella Cucina é uma **SPA React** servida como arquivos estáticos (Vercel) qu
 | **Cliente na mesa** | Login **anônimo** do Supabase, criado ao escanear o QR | Entrar na sessão da mesa, pedir e ver a conta *da própria sessão* |
 | **Staff** | E-mail e senha | Ver e atualizar pedidos, sessões, reservas e cardápio |
 
-> Hoje, "staff" é qualquer conta **não anônima** (`is_staff_session()`). A separação por papel (garçom, cozinha, admin) está na issue [#2](https://github.com/devthomaseduardo/bella-cucina/issues/2).
+> Só contas cadastradas em `staff_members` são staff, com papel `waiter`, `kitchen` ou `admin`.
 
 ## Conceitos de domínio
 
@@ -35,7 +35,7 @@ O Bella Cucina é uma **SPA React** servida como arquivos estáticos (Vercel) qu
    - garante uma sessão **anônima** no Supabase (e desloga se houver sessão de staff no aparelho);
    - chama o RPC `join_table_session_by_token`, que encontra a mesa, abre a sessão se for preciso e registra o convidado;
    - guarda `{ sessionId, guestId, tableNumber }` no `localStorage`.
-3. O carrinho ([src/components/cart/CartContext.tsx](../src/components/cart/CartContext.tsx)) insere `orders` e `order_items` ligados à sessão e ao convidado.
+3. O carrinho ([src/components/cart/CartContext.tsx](../src/components/cart/CartContext.tsx)) chama o RPC `place_order` com o `slug` e a quantidade de cada prato. O banco busca os preços e calcula o total. O token do QR fica salvo na aba, então navegar pelo site não perde a mesa.
 4. A **conta ao vivo** ([AccountModal](../src/components/cart/AccountModal.tsx)) assina via Realtime os pedidos da sessão.
 
 Se a sessão salva no `localStorage` já estiver `closed`, ela é descartada e o cliente entra numa sessão nova. Assim, o próximo ocupante da mesa nunca vê a conta anterior.
@@ -61,8 +61,5 @@ Implementação própria em [src/i18n](../src/i18n): `I18nProvider` + dicionári
 
 | Tema | Situação atual | Issue |
 |------|----------------|-------|
-| Papéis de staff | Qualquer conta não anônima é staff | [#2](https://github.com/devthomaseduardo/bella-cucina/issues/2) |
-| Entrada por número da mesa | RPC legado ainda permite entrar sem QR | [#3](https://github.com/devthomaseduardo/bella-cucina/issues/3) |
-| Preço do pedido | Calculado no cliente | [#4](https://github.com/devthomaseduardo/bella-cucina/issues/4) |
-| Cardápio | Estático em `src/data` | [#5](https://github.com/devthomaseduardo/bella-cucina/issues/5) |
+| Nomes do cardápio em EN/IT | O seed repete o texto em português | [#5](https://github.com/devthomaseduardo/bella-cucina/issues/5) |
 | Fechar a conta | Sem fluxo de "pedir a conta" | [#9](https://github.com/devthomaseduardo/bella-cucina/issues/9) |

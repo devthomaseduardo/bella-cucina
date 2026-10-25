@@ -95,8 +95,8 @@ const ReservationSection = ({
   };
 
   return (
-    <section id="reservations" className="relative scroll-mt-20 overflow-hidden bg-muted/20 py-14 sm:py-16 md:py-24">
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <section id="reservations" className="relative scroll-mt-20 overflow-hidden bg-muted/20 py-16 md:py-24">
+      <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 22 }}
@@ -105,7 +105,7 @@ const ReservationSection = ({
             transition={{ duration: 0.58, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-5"
           >
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-primary sm:text-[11px]">Reservas</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:text-xs">Reservas</p>
             <h2 className="mt-3 max-w-[10ch] font-display text-4xl leading-[0.98] text-foreground sm:text-5xl md:text-6xl">
               {title}
             </h2>
@@ -117,7 +117,7 @@ const ReservationSection = ({
               <img src={restaurantImage} alt={restaurantName} className="h-full w-full object-cover" loading="lazy" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/18 to-transparent" />
               <div className="absolute inset-x-0 bottom-0 p-5 sm:p-7">
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">Bella Cucina</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Bella Cucina</p>
                 <h3 className="mt-2 max-w-[12ch] font-display text-3xl leading-tight text-white sm:text-4xl">
                   Sua mesa, no seu tempo.
                 </h3>
@@ -144,7 +144,7 @@ const ReservationSection = ({
                     <span className={active ? "font-display text-xl text-primary" : "font-display text-xl text-muted-foreground/40"}>
                       0{number}
                     </span>
-                    <p className={active ? "mt-1 truncate text-[10px] uppercase tracking-[0.14em] text-foreground sm:text-xs" : "mt-1 truncate text-[10px] uppercase tracking-[0.14em] text-muted-foreground/50 sm:text-xs"}>
+                    <p className={active ? "mt-1 truncate text-xs uppercase tracking-[0.12em] text-foreground sm:text-xs" : "mt-1 truncate text-xs uppercase tracking-[0.12em] text-muted-foreground/50 sm:text-xs"}>
                       {label}
                     </p>
                   </div>
@@ -157,7 +157,7 @@ const ReservationSection = ({
                 <>
                   <div className="mb-6 flex items-start justify-between gap-4">
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">Disponibilidade</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Disponibilidade</p>
                       <h3 className="mt-2 font-display text-3xl text-foreground">Quando você quer vir?</h3>
                     </div>
                     <Clock3 className="mt-1 h-5 w-5 shrink-0 text-muted-foreground" aria-hidden />
@@ -186,7 +186,7 @@ const ReservationSection = ({
                 <>
                   <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">Dados da reserva</p>
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Dados da reserva</p>
                       <h3 className="mt-2 font-display text-3xl text-foreground">Só precisamos do essencial.</h3>
                     </div>
                     <Button type="button" variant="ghost" onClick={() => setStep(1)} className="w-fit rounded-full px-0 text-muted-foreground hover:bg-transparent hover:text-foreground">
@@ -210,7 +210,7 @@ const ReservationSection = ({
                   <span className="grid h-12 w-12 place-items-center rounded-full bg-primary text-primary-foreground">
                     <Check className="h-5 w-5" aria-hidden />
                   </span>
-                  <p className="mt-6 text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">Solicitação enviada</p>
+                  <p className="mt-6 text-xs font-semibold uppercase tracking-[0.16em] text-primary">Solicitação enviada</p>
                   <h3 className="mt-2 max-w-[12ch] font-display text-4xl leading-tight text-foreground sm:text-5xl">
                     Agora a equipe confirma os detalhes.
                   </h3>
@@ -233,7 +233,7 @@ const ReservationSection = ({
                     </div>
                   )}
 
-                  <Button type="button" variant="ghost" onClick={resetReservation} className="mt-6 rounded-full px-0 text-foreground hover:bg-transparent hover:text-primary">
+                  <Button type="button" variant="ghost" onClick={resetReservation} className="mt-6 px-0 text-foreground hover:bg-transparent hover:text-primary">
                     Fazer outra reserva
                   </Button>
                 </div>

@@ -70,7 +70,7 @@ export default function TableSessionsPanel() {
     <section className="mb-10">
       <div className="mb-4 flex items-end justify-between gap-4">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
             Sessões atuais
           </p>
           <h2 className="mt-1 font-display text-2xl">Mesas abertas</h2>
@@ -123,7 +123,7 @@ export default function TableSessionsPanel() {
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="rounded-full"
+                 
                   onClick={() => void closeSession(session.id)}
                   disabled={!allDelivered}
                   title={

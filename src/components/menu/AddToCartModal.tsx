@@ -13,6 +13,7 @@ import { Minus, Plus } from "lucide-react";
 import { useCart } from "../cart/CartContext";
 import { useI18n } from "@/i18n/I18nProvider";
 import { getMenuItemDetails } from "@/data/menu-item-details";
+import { formatPrice } from "@/lib/format";
 
 interface AddToCartModalProps {
   open: boolean;
@@ -24,7 +25,6 @@ interface AddToCartModalProps {
     price: number;
     image: string;
     category: string;
-    rating?: number;
   };
 }
 
@@ -87,14 +87,14 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
               <div>
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
                       {categoryLabel}
                     </span>
                     <h3 className="mt-1 font-display text-3xl leading-tight text-foreground">
                       {item.name}
                     </h3>
                   </div>
-                  <p className="font-display text-2xl text-primary">R$ {item.price.toFixed(2)}</p>
+                  <p className="font-display text-2xl text-primary">{formatPrice(item.price)}</p>
                 </div>
 
                 <p className="mt-4 text-sm leading-6 text-muted-foreground">{item.description}</p>
@@ -102,7 +102,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
 
               {details.ingredients.length > 0 && (
                 <div className="border-t border-white/10 pt-4">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     Ingredientes principais
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -122,7 +122,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                 <div className="grid gap-4 border-t border-white/10 pt-4 sm:grid-cols-2">
                   {details.allergens.length > 0 && (
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-200/80">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-200/80">
                         Atenção a alergênicos
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
@@ -140,7 +140,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
 
                   {details.dietary?.length ? (
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-200/80">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/80">
                         Perfil do prato
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
@@ -169,7 +169,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                     <Button
                       variant="outline"
                       size="icon"
-                      className="rounded-full border-white/10 bg-white/[0.04]"
+                      className="border-white/10 bg-white/[0.04]"
                       onClick={() => setQuantity((value) => Math.max(1, value - 1))}
                       disabled={quantity <= 1}
                     >
@@ -179,7 +179,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                     <Button
                       variant="outline"
                       size="icon"
-                      className="rounded-full border-white/10 bg-white/[0.04]"
+                      className="border-white/10 bg-white/[0.04]"
                       onClick={() => setQuantity((value) => value + 1)}
                     >
                       <Plus className="h-4 w-4" />
@@ -212,7 +212,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
               <div className="flex items-center justify-between border-t border-white/10 pt-4">
                 <span className="font-medium">{t("addToCart.total")}</span>
                 <span className="font-display text-2xl text-primary">
-                  R$ {(item.price * quantity).toFixed(2)}
+                  {formatPrice((item.price * quantity))}
                 </span>
               </div>
             </div>
@@ -220,12 +220,12 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
             <DialogFooter>
               <Button
                 variant="outline"
-                className="rounded-full border-white/10 bg-white/[0.04]"
+                className="border-white/10 bg-white/[0.04]"
                 onClick={() => onOpenChange(false)}
               >
                 {t("addToCart.cancel")}
               </Button>
-              <Button className="rounded-full" onClick={handleAddToCart}>
+              <Button onClick={handleAddToCart}>
                 {t("addToCart.confirm")}
               </Button>
             </DialogFooter>

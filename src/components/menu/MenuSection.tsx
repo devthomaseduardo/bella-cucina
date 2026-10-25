@@ -53,9 +53,9 @@ const MenuSection = ({
       try {
         const { data, error } = await supabase
           .from("menu_items")
-          .select("*, menu_categories(name_en)")
-          .order("popular", { ascending: false })
-          .order("name_pt", { ascending: true });
+          .select("*, menu_categories(slug)")
+          .eq("available", true)
+          .order("order", { ascending: true });
 
         if (error) throw error;
         if (!active) return;
@@ -63,14 +63,15 @@ const MenuSection = ({
         if (data?.length) {
           setDbItems(
             data.map((row) => ({
-              id: row.id,
+              // The slug is shared with the static data (details, allergens) and place_order.
+              id: row.slug ?? row.id,
               name: row.name_pt || row.name_en,
               description: row.description_pt || row.description_en || "",
               price: Number(row.price),
               image:
                 row.image_url ||
                 "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
-              category: (row.menu_categories?.name_en?.toLowerCase() || "specials") as MenuCategoryId,
+              category: (row.menu_categories?.slug || "specials") as MenuCategoryId,
               featured: Boolean(row.popular),
             })),
           );
@@ -116,7 +117,7 @@ const MenuSection = ({
 
   return (
     <div className="relative w-full min-w-0 overflow-hidden bg-background pb-20 pt-8 sm:pb-24 md:pt-12 lg:pb-28">
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.header
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -125,7 +126,7 @@ const MenuSection = ({
           className="grid gap-7 border-b border-white/10 pb-8 md:pb-10 lg:grid-cols-[1fr_auto] lg:items-end"
         >
           <div className="max-w-3xl">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-primary sm:text-[11px]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:text-xs">
               Cardápio digital
             </p>
             <h2 className="mt-3 max-w-[12ch] font-display text-4xl leading-[0.96] text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
@@ -157,10 +158,10 @@ const MenuSection = ({
           <section className="py-8 sm:py-10">
             <div className="mb-5 flex items-end justify-between gap-4">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">Seleção da casa</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Seleção da casa</p>
                 <h3 className="mt-2 font-display text-2xl text-foreground sm:text-3xl">Comece por aqui.</h3>
               </div>
-              <span className="hidden text-xs uppercase tracking-[0.18em] text-muted-foreground sm:block">
+              <span className="hidden text-xs uppercase tracking-[0.16em] text-muted-foreground sm:block">
                 {featuredItems.length} sugestões
               </span>
             </div>
@@ -204,7 +205,7 @@ const MenuSection = ({
         </div>
 
         <div className="mb-5 mt-7 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground">
             <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden />
             <span>{activeCategory === "all" ? "Todos os pratos" : t(`menu.category.${activeCategory}`)}</span>
           </div>

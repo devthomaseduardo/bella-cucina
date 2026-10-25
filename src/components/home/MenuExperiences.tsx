@@ -40,7 +40,7 @@ export function MenuExperiences() {
       className="relative scroll-mt-24 overflow-hidden border-y border-white/10 bg-muted/30 py-16 md:py-24"
     >
       <div className="absolute inset-0 bella-grid-bg opacity-25" aria-hidden />
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -48,7 +48,7 @@ export function MenuExperiences() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
+          <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
             {t("experiences.kicker")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl md:text-5xl">
@@ -59,7 +59,8 @@ export function MenuExperiences() {
           </p>
         </motion.div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        {/* Phones: horizontal snap carousel; desktop: three-column grid. */}
+        <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:px-0 md:mt-10 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
           {cards.map((c, index) => (
               <motion.button
               key={c.key}
@@ -74,7 +75,7 @@ export function MenuExperiences() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
               className={cn(
-                  "group relative min-h-[28rem] overflow-hidden rounded-[1.5rem] border border-white/10 text-left",
+                  "group relative w-[82vw] max-w-[22rem] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/10 text-left md:w-auto md:max-w-none",
                   "bg-white/[0.045] shadow-[0_24px_80px_-56px_rgba(0,0,0,0.9)] transition duration-300",
                   "hover:-translate-y-1 hover:border-primary/35 hover:bg-white/[0.065]",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -91,11 +92,9 @@ export function MenuExperiences() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/86 via-transparent to-transparent" />
               </div>
 
-                <div className="relative z-10 flex h-full min-h-[28rem] flex-col justify-between p-5 sm:p-6">
+                <div className="relative z-10 flex h-full min-h-[22rem] flex-col justify-between p-5 sm:p-6 md:min-h-[26rem]">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full border border-white/15 bg-white/[0.08] px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white/70 backdrop-blur">
-                  Bella Cucina
-                    </span>
+                    <span />
                     <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-black/40 font-display text-lg text-[hsl(var(--accent))] backdrop-blur">
                       {c.code}
                     </span>

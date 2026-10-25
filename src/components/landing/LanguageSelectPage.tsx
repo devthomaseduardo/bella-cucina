@@ -37,7 +37,7 @@ const LanguageSelectPage = () => {
           src={HERO_BG}
           alt=""
           className="h-full w-full object-cover object-center"
-          fetchPriority="high"
+          {...{ fetchpriority: "high" }}
         />
         <div
           className="absolute inset-0 bg-[linear-gradient(105deg,rgba(8,6,4,0.94)_0%,rgba(8,6,4,0.72)_48%,rgba(8,6,4,0.88)_100%)]"
@@ -49,14 +49,14 @@ const LanguageSelectPage = () => {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-center px-6 py-16 md:px-8 lg:py-20">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-screen-2xl flex-col justify-center px-6 py-16 md:px-8 lg:py-20">
         <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
             animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
             transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
           >
-            <p className="text-[11px] font-medium uppercase tracking-[0.32em] text-[hsl(var(--accent))]">
+            <p className="text-xs font-medium uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
               Bella Cucina
             </p>
 
@@ -68,7 +68,7 @@ const LanguageSelectPage = () => {
               {t("languageSelect.subtitle")}
             </p>
 
-            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 border-t border-white/10 pt-6 text-[11px] uppercase tracking-[0.2em] text-white/40">
+            <div className="mt-10 flex flex-wrap gap-x-8 gap-y-2 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.16em] text-white/40">
               <span>Cardápio digital</span>
               <span>Pedidos por QR</span>
               <span>Reservas online</span>
@@ -89,7 +89,7 @@ const LanguageSelectPage = () => {
             }}
             className="rounded-[1.5rem] border border-white/10 bg-black/40 p-5 shadow-[0_32px_100px_-40px_rgba(0,0,0,0.85)] backdrop-blur-2xl sm:p-7"
           >
-            <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
+            <p className="text-xs uppercase tracking-[0.16em] text-white/45">
               Idioma · Language · Lingua
             </p>
             <p className="mt-2 font-display text-2xl text-white sm:text-3xl">
@@ -119,7 +119,7 @@ const LanguageSelectPage = () => {
                     )}
                   >
                     <span className="flex items-center gap-3">
-                      <span className="grid h-9 w-9 place-items-center rounded-full border border-white/12 bg-white/[0.06] text-[11px] font-semibold tracking-wider text-primary">
+                      <span className="grid h-9 w-9 place-items-center rounded-full border border-white/12 bg-white/[0.06] text-xs font-semibold tracking-wider text-primary">
                         {lang.native}
                       </span>
                       {lang.label}

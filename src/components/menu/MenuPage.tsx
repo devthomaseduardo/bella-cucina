@@ -11,16 +11,15 @@ const MenuPageContent = () => {
   return (
     <div className="min-h-screen w-full min-w-0 overflow-x-hidden bg-background">
       <StickySiteNav />
-      <FloatingActions showWaiterAction={false} />
 
       <main className="min-w-0 pt-20 sm:pt-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
           <Link
             to="/menu"
             className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition hover:text-foreground"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" aria-hidden />
-            Voltar para a experiência
+            Voltar ao início
           </Link>
         </div>
 
@@ -29,12 +28,9 @@ const MenuPageContent = () => {
         </section>
       </main>
 
-      <Footer
-        restaurantName="Bella Cucina"
-        address="Jardins, São Paulo"
-        phone="(11) 1234-5678"
-        email="contato@bellacucina.com"
-      />
+      <Footer />
+
+      <FloatingActions showWaiterAction={false} />
     </div>
   );
 };
