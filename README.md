@@ -117,6 +117,7 @@ docs/                     documentação técnica e de operação
 | Documento | Para quem |
 |-----------|-----------|
 | [Arquitetura](docs/arquitetura.md) | Devs: visão geral, fluxos e decisões |
+| [Guia de design](docs/design-system.md) | Devs e designers: cores, fontes, espaçamentos, botões e leis de UX |
 | [Banco de dados](docs/banco-de-dados.md) | Devs: tabelas, funções e regras de acesso |
 | [Setup local](docs/setup-local.md) | Devs: subir o ambiente completo com Supabase |
 | [Operação](docs/operacao.md) | Restaurante: como a equipe usa o sistema |
