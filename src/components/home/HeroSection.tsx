@@ -19,8 +19,13 @@ const today = hoursForDay();
 
 /** Unsplash serves resized, compressed variants via query params. */
 function heroUrl(src: string, width: number, height: number) {
-  if (!src.includes("images.unsplash.com")) return src;
-  const url = new URL(src);
+  let url: URL;
+  try {
+    url = new URL(src);
+  } catch {
+    return src;
+  }
+  if (url.hostname !== "images.unsplash.com") return src;
   url.search = new URLSearchParams({
     w: String(width),
     h: String(height),
