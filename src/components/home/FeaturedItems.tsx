@@ -8,7 +8,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
-import { Button } from "@/components/ui/button";
 import { useI18n } from "@/i18n/I18nProvider";
 import { FEATURED_HIGHLIGHT_ITEMS } from "@/data/italian-menu";
 import { useNavigate } from "react-router-dom";

@@ -2,22 +2,25 @@
   "name": "bella-cucina",
   "private": true,
   "version": "1.0.0",
-  "description": "Cardápio digital, reservas e pedidos por QR — restaurante italiano (demo full stack)",
+  "description": "Cardápio digital com pedido por QR na mesa, painéis de garçom/cozinha/salão e reservas — React + Supabase",
   "type": "module",
   "author": "devthomaseduardo",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/devthomaseduardo/BellaCucina"
+    "url": "https://github.com/devthomaseduardo/bella-cucina"
   },
-  "homepage": "https://github.com/devthomaseduardo/BellaCucina#readme",
+  "homepage": "https://github.com/devthomaseduardo/bella-cucina#readme",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "build:force": "vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "types:supabase": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/supabase.ts"
+    "types:supabase": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/supabase.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.6.0",
@@ -74,6 +77,9 @@
   "devDependencies": {
     "@eslint/js": "^9.39.4",
     "@swc/core": "1.3.96",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.3",
     "@types/node": "^20.14.2",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
@@ -83,10 +89,12 @@
     "eslint": "^9.39.4",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.26",
+    "jsdom": "^26.1.0",
     "postcss": "^8.4.38",
     "tailwindcss": "3.4.1",
     "typescript": "^5.2.2",
     "typescript-eslint": "^8.59.0",
-    "vite": "^5.2.0"
+    "vite": "^5.2.0",
+    "vitest": "^3.2.7"
   }
 }
