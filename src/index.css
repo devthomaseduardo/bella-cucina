@@ -5,8 +5,8 @@
 @layer base {
   :root,
   .dark {
-    --font-sans: "Inter";
-    --font-serif: "Playfair Display";
+    --font-sans: "Inter Variable", "Inter";
+    --font-serif: "Playfair Display Variable", "Playfair Display";
 
     --background: 18 23% 5%;
     --foreground: 38 34% 94%;
