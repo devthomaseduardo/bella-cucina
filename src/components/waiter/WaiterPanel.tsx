@@ -408,7 +408,7 @@
                                   </span>
                                   <span className="ml-2">{item.name}</span>
                                   {item.customerName && (
-                                    <span className="ml-2 text-[10px] bg-muted px-1.5 py-0.5 rounded text-muted-foreground uppercase tracking-wider font-bold">
+                                    <span className="ml-2 text-xs bg-muted px-1.5 py-0.5 rounded text-muted-foreground uppercase tracking-wider font-bold">
                                       {item.customerName}
                                     </span>
                                   )}

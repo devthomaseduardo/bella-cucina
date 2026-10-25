@@ -87,7 +87,7 @@ function KitchenBoard() {
       <div className="mx-auto max-w-screen-2xl">
         <header className="mb-8 flex items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-primary">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
               Operação
             </p>
             <h1 className="mt-2 font-display text-4xl sm:text-5xl">Cozinha</h1>
@@ -114,7 +114,7 @@ function KitchenBoard() {
               >
                 <div className="flex items-start justify-between gap-4">
                   <div>
-                    <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
                       Mesa {item.orders?.table_number ?? "?"}
                     </p>
                     <h2 className="mt-2 font-display text-2xl leading-tight">
@@ -127,7 +127,7 @@ function KitchenBoard() {
                 </div>
 
                 <div className="mt-5 rounded-2xl bg-black/20 p-4">
-                  <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                     Levar para
                   </p>
                   <p className="mt-1 text-xl font-semibold text-foreground">
@@ -160,7 +160,7 @@ function KitchenBoard() {
                   )}
                 </div>
 
-                <p className="mt-4 flex items-center gap-1.5 text-[11px] text-muted-foreground">
+                <p className="mt-4 flex items-center gap-1.5 text-xs text-muted-foreground">
                   <Clock3 className="h-3.5 w-3.5" />
                   Pedido às {new Date(item.created_at).toLocaleTimeString("pt-BR", {
                     hour: "2-digit",

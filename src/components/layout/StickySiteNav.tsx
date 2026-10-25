@@ -83,7 +83,7 @@ export function StickySiteNav() {
             <button
               type="button"
               onClick={() => go("/cardapio")}
-              className="hidden text-[10px] font-semibold uppercase tracking-[0.16em] text-white/70 min-[390px]:block"
+              className="hidden text-xs font-semibold uppercase tracking-[0.16em] text-white/70 min-[390px]:block"
             >
               Cardápio
             </button>

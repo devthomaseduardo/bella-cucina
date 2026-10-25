@@ -158,7 +158,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                       {tableToken ? "Mesa identificada pelo QR" : `Mesa ${localTableNumber}`} · {localCustomerName}
                     </p>
                   </div>
-                  <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-amber-100">
+                  <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-amber-100">
                     Recebido pela equipe
                   </span>
                 </div>
@@ -201,7 +201,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                                   {details.allergens.map((allergen) => (
                                     <span
                                       key={allergen}
-                                      className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-amber-100"
+                                      className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-amber-100"
                                     >
                                       {allergen}
                                     </span>
@@ -225,7 +225,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                 <div className="border-t border-white/10 px-4 py-4 sm:px-5">
                   <div className="flex items-end justify-between gap-4">
                     <div>
-                      <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Resumo</p>
+                      <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Resumo</p>
                       <p className="mt-1 text-sm text-muted-foreground">
                         {submittedItems.reduce((sum, item) => sum + item.quantity, 0)} itens enviados
                       </p>
@@ -266,7 +266,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                   <div>
                     {requiresQr ? (
                       <div className="rounded-2xl border border-amber-300/20 bg-amber-300/[0.06] p-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-200">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
                           Mesa não identificada
                         </p>
                         <p className="mt-1 text-sm text-muted-foreground">
@@ -275,7 +275,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                       </div>
                     ) : tableToken ? (
                       <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.06] p-3">
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-200">
+                        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">
                           Mesa validada
                         </p>
                         <p className="mt-1 text-sm text-muted-foreground">
@@ -292,7 +292,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                           placeholder="Ex.: 12"
                           className="mt-1 rounded-full border-white/10 bg-white/[0.04]"
                         />
-                        <p className="mt-1.5 text-[10px] leading-4 text-muted-foreground">
+                        <p className="mt-1.5 text-xs leading-4 text-muted-foreground">
                           Entrada manual para demonstração. No restaurante, a mesa vem do QR.
                         </p>
                       </>
@@ -336,7 +336,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                               </div>
 
                               {details.allergens.length > 0 && (
-                                <p className="mt-2 text-[10px] leading-4 text-amber-100/80">
+                                <p className="mt-2 text-xs leading-4 text-amber-100/80">
                                   Alergênicos: {details.allergens.join(", ")}
                                 </p>
                               )}

@@ -240,7 +240,7 @@ const AdminPageContent = () => {
                 Voltar para o site
               </Link>
             </Button>
-            <p className="text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
+            <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
               Caixa & administração
             </p>
             <h1 className="mt-3 font-display text-4xl leading-tight text-foreground sm:text-5xl">
@@ -281,22 +281,22 @@ const AdminPageContent = () => {
 
         <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
           <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Em aberto</p>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Em aberto</p>
             <p className="mt-3 font-display text-3xl">{formatCurrency(summary.activeTotal)}</p>
             <p className="mt-1 text-sm text-muted-foreground">{summary.activeCount} pedidos ativos</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Recebido</p>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Recebido</p>
             <p className="mt-3 font-display text-3xl">{formatCurrency(summary.deliveredTotal)}</p>
             <p className="mt-1 text-sm text-muted-foreground">{summary.deliveredCount} contas fechadas</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Ticket médio</p>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Ticket médio</p>
             <p className="mt-3 font-display text-3xl">{formatCurrency(summary.averageTicket)}</p>
             <p className="mt-1 text-sm text-muted-foreground">sobre pedidos fechados</p>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-5">
-            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Cancelado</p>
+            <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Cancelado</p>
             <p className="mt-3 font-display text-3xl">{formatCurrency(summary.cancelledTotal)}</p>
             <p className="mt-1 text-sm text-muted-foreground">fora do caixa recebido</p>
           </div>
@@ -420,7 +420,7 @@ const AdminPageContent = () => {
 
           <aside className="grid content-start gap-4">
             <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-5">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[hsl(var(--accent))]">
+              <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
                 Mesas abertas
               </p>
               <div className="mt-4 grid gap-3">
@@ -443,7 +443,7 @@ const AdminPageContent = () => {
             </div>
 
             <div className="rounded-[1.75rem] border border-white/10 bg-white/[0.045] p-5">
-              <p className="text-[11px] uppercase tracking-[0.22em] text-[hsl(var(--accent))]">
+              <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
                 Fluxo correto
               </p>
               <ol className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">

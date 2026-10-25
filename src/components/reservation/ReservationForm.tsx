@@ -55,7 +55,7 @@ const ReservationForm = ({
     <div className="w-full">
       {selectedDate && selectedTime && (
         <div className="mb-7 border-y border-white/10 py-4">
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">Horário escolhido</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Horário escolhido</p>
           <p className="mt-2 text-sm font-medium text-foreground">
             {selectedDate.toLocaleDateString("pt-BR", {
               weekday: "long",

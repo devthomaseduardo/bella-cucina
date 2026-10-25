@@ -89,7 +89,7 @@ const HomePageContent = () => {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="lg:col-span-5"
               >
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
+                <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
                   {t("about.kicker")}
                 </p>
                 <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl md:text-5xl">
@@ -101,7 +101,7 @@ const HomePageContent = () => {
 
                 <div className="mt-8 grid gap-3">
                   <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                       Produto
                     </p>
                     <p className="mt-2 font-display text-xl text-foreground">
@@ -109,7 +109,7 @@ const HomePageContent = () => {
                       </p>
                     </div>
                   <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                       Operação
                     </p>
                     <p className="mt-2 font-display text-xl text-foreground">
@@ -117,7 +117,7 @@ const HomePageContent = () => {
                       </p>
                     </div>
                   <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
-                    <p className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                       Experiência
                     </p>
                     <p className="mt-2 font-display text-xl text-foreground">
@@ -146,7 +146,7 @@ const HomePageContent = () => {
                     <p className="max-w-xl text-base leading-relaxed text-white/90">
                       {t("about.quote")}
                     </p>
-                    <p className="mt-3 text-sm font-semibold uppercase tracking-[0.18em] text-[hsl(var(--accent))]">
+                    <p className="mt-3 text-sm font-semibold uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
                       {t("about.chef")}
                     </p>
                   </div>
@@ -166,7 +166,7 @@ const HomePageContent = () => {
                 transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                 className="lg:col-span-5"
               >
-                <p className="text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
+                <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
                   {t("contact.kicker")}
                 </p>
                 <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl md:text-5xl">
@@ -179,7 +179,7 @@ const HomePageContent = () => {
                 <div className="mt-8 space-y-3 text-sm">
                   <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
                     <p className="flex items-center gap-2 font-semibold text-foreground">
-                      <span className="text-[10px] uppercase tracking-[0.18em] text-primary">Rua</span>
+                      <span className="text-xs uppercase tracking-[0.16em] text-primary">Rua</span>
                       {t("contact.address")}
                     </p>
                     <p className="mt-1 text-muted-foreground">
@@ -189,14 +189,14 @@ const HomePageContent = () => {
                   <div className="grid gap-3 sm:grid-cols-2">
                     <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
                       <p className="flex items-center gap-2 font-semibold text-foreground">
-                        <span className="text-[10px] uppercase tracking-[0.18em] text-primary">Tel</span>
+                        <span className="text-xs uppercase tracking-[0.16em] text-primary">Tel</span>
                         {t("contact.phone")}
                       </p>
                       <p className="mt-1 text-muted-foreground">(11) 1234-5678</p>
                     </div>
                     <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
                       <p className="flex items-center gap-2 font-semibold text-foreground">
-                        <span className="text-[10px] uppercase tracking-[0.18em] text-primary">Mail</span>
+                        <span className="text-xs uppercase tracking-[0.16em] text-primary">Mail</span>
                         {t("contact.email")}
                       </p>
                       <p className="mt-1 text-muted-foreground">
@@ -206,7 +206,7 @@ const HomePageContent = () => {
                   </div>
                   <div className="rounded-2xl border border-white/10 bg-white/[0.045] p-4">
                     <p className="flex items-center gap-2 font-semibold text-foreground">
-                      <span className="text-[10px] uppercase tracking-[0.18em] text-primary">Hora</span>
+                      <span className="text-xs uppercase tracking-[0.16em] text-primary">Hora</span>
                       {t("contact.hours")}
                     </p>
                     <p className="mt-1 text-muted-foreground">
@@ -228,7 +228,7 @@ const HomePageContent = () => {
               >
                 <div className="flex items-center justify-between gap-4 border-b border-white/10 px-5 py-4 pr-20 sm:pr-5">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.22em] text-muted-foreground">
+                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                       Localização
                     </p>
                     <p className="mt-1 font-display text-xl text-foreground">

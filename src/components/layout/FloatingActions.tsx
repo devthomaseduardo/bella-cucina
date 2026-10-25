@@ -48,7 +48,7 @@ const FloatingActions = ({
           <ReceiptText className="h-4 w-4 text-primary" aria-hidden />
           <span className="text-sm font-semibold sm:hidden">Conta</span>
           <span className="hidden text-xs font-semibold sm:inline">Minha conta</span>
-          <span className="hidden text-[9px] uppercase tracking-[0.14em] text-white/55 sm:inline">
+          <span className="hidden text-xs uppercase tracking-[0.12em] text-white/55 sm:inline">
             ao vivo
           </span>
         </button>
@@ -68,7 +68,7 @@ const FloatingActions = ({
           <span className="relative shrink-0">
             <ShoppingBag className="h-5 w-5" aria-hidden />
             {hasItems && (
-              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-black px-1 text-[10px] font-bold text-white">
+              <span className="absolute -right-2 -top-2 grid h-4 min-w-4 place-items-center rounded-full bg-black px-1 text-xs font-bold text-white">
                 {totalItems}
               </span>
             )}

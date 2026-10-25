@@ -48,7 +48,7 @@ export function MenuExperiences() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"
         >
-          <p className="text-[11px] uppercase tracking-[0.28em] text-[hsl(var(--accent))]">
+          <p className="text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
             {t("experiences.kicker")}
           </p>
           <h2 className="mt-3 font-display text-3xl text-foreground sm:text-4xl md:text-5xl">
@@ -93,7 +93,7 @@ export function MenuExperiences() {
 
                 <div className="relative z-10 flex h-full min-h-[28rem] flex-col justify-between p-5 sm:p-6">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full border border-white/15 bg-white/[0.08] px-3 py-1 text-[10px] uppercase tracking-[0.2em] text-white/70 backdrop-blur">
+                    <span className="rounded-full border border-white/15 bg-white/[0.08] px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/70 backdrop-blur">
                   Bella Cucina
                     </span>
                     <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-black/40 font-display text-lg text-[hsl(var(--accent))] backdrop-blur">

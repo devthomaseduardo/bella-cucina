@@ -73,7 +73,7 @@ const GalleryStrip = () => {
           className="mb-8 grid gap-5 md:mb-10 lg:grid-cols-[0.8fr_1fr] lg:items-end"
         >
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-primary sm:text-[11px]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:text-xs">
               {t("gallery.kicker")}
             </p>
             <h2 className="mt-3 max-w-[10ch] font-display text-4xl leading-[0.98] text-foreground sm:text-5xl md:text-6xl">
@@ -109,14 +109,14 @@ const GalleryStrip = () => {
                       <figcaption className="absolute inset-x-0 bottom-0 p-5 sm:p-7 md:p-9">
                         <div className="flex items-end justify-between gap-4">
                           <div>
-                            <span className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">
+                            <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
                               {String(index + 1).padStart(2, "0")} · {item.tone}
                             </span>
                             <p className="mt-2 max-w-xl font-display text-3xl leading-tight text-white sm:text-4xl md:text-5xl">
                               {item.alt}
                             </p>
                           </div>
-                          <span className="hidden shrink-0 text-xs uppercase tracking-[0.2em] text-white/45 sm:block">
+                          <span className="hidden shrink-0 text-xs uppercase tracking-[0.16em] text-white/45 sm:block">
                             Bella Cucina
                           </span>
                         </div>
@@ -141,7 +141,7 @@ const GalleryStrip = () => {
             className="flex flex-col justify-between bg-muted/20 p-5 sm:p-6 lg:p-7"
           >
             <div>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-primary">Ritual da noite</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Ritual da noite</p>
               <h3 className="mt-3 max-w-[12ch] font-display text-3xl leading-tight text-foreground">
                 O serviço acompanha o ritmo da mesa.
               </h3>
@@ -163,7 +163,7 @@ const GalleryStrip = () => {
               <img src={items[5]?.src} alt={items[5]?.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/88 via-black/12 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-5">
-                <span className="text-[10px] uppercase tracking-[0.22em] text-primary">Reserva</span>
+                <span className="text-xs uppercase tracking-[0.16em] text-primary">Reserva</span>
                 <p className="mt-2 max-w-[20rem] font-display text-2xl leading-tight text-white">
                   Planeje a noite em poucos passos.
                 </p>
@@ -178,7 +178,7 @@ const GalleryStrip = () => {
               <img src={item.src} alt={item.alt} loading="lazy" className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/76 via-transparent to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-4">
-                <span className="text-[9px] uppercase tracking-[0.22em] text-primary">{item.tone}</span>
+                <span className="text-xs uppercase tracking-[0.16em] text-primary">{item.tone}</span>
                 <p className="mt-1 line-clamp-1 text-sm font-medium text-white">{item.alt}</p>
               </figcaption>
             </figure>

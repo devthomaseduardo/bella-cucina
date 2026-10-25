@@ -87,7 +87,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
               <div>
                 <div className="flex flex-wrap items-start justify-between gap-3">
                   <div>
-                    <span className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">
+                    <span className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">
                       {categoryLabel}
                     </span>
                     <h3 className="mt-1 font-display text-3xl leading-tight text-foreground">
@@ -102,7 +102,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
 
               {details.ingredients.length > 0 && (
                 <div className="border-t border-white/10 pt-4">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                  <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground">
                     Ingredientes principais
                   </p>
                   <div className="mt-3 flex flex-wrap gap-2">
@@ -122,7 +122,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                 <div className="grid gap-4 border-t border-white/10 pt-4 sm:grid-cols-2">
                   {details.allergens.length > 0 && (
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-amber-200/80">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-200/80">
                         Atenção a alergênicos
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">
@@ -140,7 +140,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
 
                   {details.dietary?.length ? (
                     <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-emerald-200/80">
+                      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200/80">
                         Perfil do prato
                       </p>
                       <div className="mt-2 flex flex-wrap gap-2">

@@ -59,7 +59,7 @@ const DateTimePicker = ({
       <div>
         <div className="mb-3 flex items-center justify-between gap-3">
           <Label className="text-sm font-semibold text-foreground">Escolha a data</Label>
-          <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Passo 01</span>
+          <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Passo 01</span>
         </div>
         <div className="overflow-hidden bg-muted/20 p-2 sm:p-3">
           <Calendar
@@ -79,7 +79,7 @@ const DateTimePicker = ({
       <div>
         <div className="mb-3 flex items-center justify-between gap-3">
           <Label className="text-sm font-semibold text-foreground">Escolha o horário</Label>
-          <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">Passo 02</span>
+          <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Passo 02</span>
         </div>
 
         <div className="grid grid-cols-3 gap-2 sm:grid-cols-4 lg:grid-cols-3">
@@ -119,7 +119,7 @@ const DateTimePicker = ({
 
         {date && timeSlot && selectedTimeIsValid && (
           <div className="mt-6 bg-primary/10 p-4">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-primary">Sua escolha</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Sua escolha</p>
             <p className="mt-2 text-sm leading-6 text-foreground">
               {date.toLocaleDateString("pt-BR", {
                 weekday: "long",

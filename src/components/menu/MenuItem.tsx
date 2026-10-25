@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import AddToCartModal from "./AddToCartModal";
 import { useI18n } from "@/i18n/I18nProvider";
 import { motion } from "framer-motion";
-import { Plus } from "lucide-react";
+import { Info, Plus } from "lucide-react";
 import { getMenuItemDetails } from "@/data/menu-item-details";
 import { formatPrice } from "@/lib/format";
 
@@ -60,7 +60,7 @@ const MenuItem = ({
             <div className="absolute inset-0 bg-gradient-to-t from-black/78 via-transparent to-black/10" />
 
             <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4">
-              <span className="text-[9px] font-semibold uppercase tracking-[0.2em] text-white/72">
+              <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/72">
                 {categoryLabel}
               </span>
               <span className="font-display text-2xl text-white">{formatPrice(price)}</span>
@@ -79,7 +79,7 @@ const MenuItem = ({
                 {details.dietary?.slice(0, 1).map((label) => (
                   <span
                     key={label}
-                    className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-emerald-100"
+                    className="rounded-full border border-emerald-400/20 bg-emerald-400/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-emerald-100"
                   >
                     {label}
                   </span>
@@ -87,7 +87,7 @@ const MenuItem = ({
                 {details.allergens.slice(0, 2).map((allergen) => (
                   <span
                     key={allergen}
-                    className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-[9px] font-semibold uppercase tracking-[0.08em] text-amber-100"
+                    className="rounded-full border border-amber-400/20 bg-amber-400/10 px-2.5 py-1 text-xs font-semibold uppercase tracking-[0.08em] text-amber-100"
                   >
                     Contém {allergen}
                   </span>
@@ -96,8 +96,9 @@ const MenuItem = ({
             )}
 
             <div className="mt-5 flex items-center justify-between gap-3">
-              <span className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-                Ingredientes e detalhes
+              <span className="inline-flex items-center gap-1.5 text-sm text-muted-foreground underline-offset-4 group-hover:text-foreground group-hover:underline">
+                <Info className="h-4 w-4" aria-hidden />
+                Detalhes
               </span>
               <Button
                 size="sm"

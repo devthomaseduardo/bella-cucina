@@ -48,7 +48,7 @@ const FeaturedItems = ({ items = DEFAULT_FEATURED, title, subtitle }: FeaturedIt
           className="mb-8 grid gap-5 md:mb-10 lg:grid-cols-[1fr_auto] lg:items-end"
         >
           <div className="max-w-2xl">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-primary sm:text-[11px]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:text-xs">
               Destaques da cozinha
             </p>
             <h2 className="mt-3 max-w-[12ch] font-display text-4xl leading-[0.98] text-foreground sm:text-5xl md:text-6xl">
@@ -90,7 +90,7 @@ const FeaturedItems = ({ items = DEFAULT_FEATURED, title, subtitle }: FeaturedIt
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-black/10" />
                       <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 sm:p-5">
-                        <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-white/72">
+                        <span className="text-xs font-semibold uppercase tracking-[0.16em] text-white/72">
                           {t(`menu.category.${item.category}`)}
                         </span>
                         <span className="font-display text-2xl text-white">{formatPrice(item.price)}</span>
@@ -107,7 +107,7 @@ const FeaturedItems = ({ items = DEFAULT_FEATURED, title, subtitle }: FeaturedIt
                       </p>
 
                       <div className="mt-auto flex items-center justify-between pt-5">
-                        <span className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">Assinatura da casa</span>
+                        <span className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Assinatura da casa</span>
                         <span className="inline-flex items-center gap-1 text-xs font-semibold text-foreground transition group-hover:text-primary">
                           Ver prato
                           <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden />

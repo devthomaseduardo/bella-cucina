@@ -32,7 +32,7 @@ export function ChefBrigadeSection() {
                 loading="eager"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/86 via-black/30 to-transparent p-6 pt-28 text-white">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/68">
+                <p className="text-xs uppercase tracking-[0.16em] text-white/68">
                   {t("chef.kicker")}
                 </p>
                 <p className="mt-1 font-display text-3xl">{t("chef.role")}</p>
@@ -56,7 +56,7 @@ export function ChefBrigadeSection() {
             transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
             className="lg:col-span-7"
           >
-            <p className="inline-flex rounded-full border border-white/10 bg-white/[0.045] px-3 py-1 text-[11px] uppercase tracking-[0.24em] text-[hsl(var(--accent))]">
+            <p className="inline-flex rounded-full border border-white/10 bg-white/[0.045] px-3 py-1 text-xs uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
               {t("chef.kicker")}
             </p>
             <h2 className="mt-4 max-w-3xl font-display text-3xl text-foreground sm:text-4xl md:text-5xl">

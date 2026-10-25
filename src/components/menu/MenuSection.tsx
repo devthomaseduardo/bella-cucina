@@ -126,7 +126,7 @@ const MenuSection = ({
           className="grid gap-7 border-b border-white/10 pb-8 md:pb-10 lg:grid-cols-[1fr_auto] lg:items-end"
         >
           <div className="max-w-3xl">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-primary sm:text-[11px]">
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary sm:text-xs">
               Cardápio digital
             </p>
             <h2 className="mt-3 max-w-[12ch] font-display text-4xl leading-[0.96] text-foreground sm:text-5xl md:text-6xl lg:text-7xl">
@@ -158,10 +158,10 @@ const MenuSection = ({
           <section className="py-8 sm:py-10">
             <div className="mb-5 flex items-end justify-between gap-4">
               <div>
-                <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-primary">Seleção da casa</p>
+                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Seleção da casa</p>
                 <h3 className="mt-2 font-display text-2xl text-foreground sm:text-3xl">Comece por aqui.</h3>
               </div>
-              <span className="hidden text-xs uppercase tracking-[0.18em] text-muted-foreground sm:block">
+              <span className="hidden text-xs uppercase tracking-[0.16em] text-muted-foreground sm:block">
                 {featuredItems.length} sugestões
               </span>
             </div>
@@ -205,7 +205,7 @@ const MenuSection = ({
         </div>
 
         <div className="mb-5 mt-7 flex items-center justify-between gap-4">
-          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="flex items-center gap-2 text-xs uppercase tracking-[0.16em] text-muted-foreground">
             <SlidersHorizontal className="h-3.5 w-3.5" aria-hidden />
             <span>{activeCategory === "all" ? "Todos os pratos" : t(`menu.category.${activeCategory}`)}</span>
           </div>

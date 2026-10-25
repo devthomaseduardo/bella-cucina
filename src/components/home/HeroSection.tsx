@@ -63,7 +63,7 @@ const HeroSection = ({
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
           className="max-w-3xl"
         >
-          <p className="inline-flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.3em] text-[hsl(var(--accent))]">
+          <p className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
             <span className="h-px w-8 bg-[hsl(var(--accent))]" aria-hidden />
             {eyebrow}
           </p>
@@ -115,12 +115,12 @@ const HeroSection = ({
           {signals.map((item) => (
             <div
               key={item.label}
-              className="bg-black/20 px-4 py-4 text-center sm:px-6 sm:py-5 sm:text-left"
+              className="min-w-0 bg-black/20 px-2 py-4 text-center sm:px-6 sm:py-5 sm:text-left"
             >
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/40">
+              <p className="text-xs uppercase tracking-[0.12em] text-white/50">
                 {item.label}
               </p>
-              <p className="mt-1.5 font-display text-lg text-white sm:text-xl">
+              <p className="mt-1.5 font-display text-base leading-snug text-white sm:text-xl">
                 {item.value}
               </p>
             </div>
