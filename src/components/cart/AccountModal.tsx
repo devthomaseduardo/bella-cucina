@@ -227,7 +227,6 @@ export default function AccountModal({ open, onOpenChange }: AccountModalProps) 
                   type="button"
                   variant="ghost"
                   size="sm"
-                  className="h-8 rounded-full text-xs"
                   onClick={() => void refresh()}
                   disabled={loading}
                 >

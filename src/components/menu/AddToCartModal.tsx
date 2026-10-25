@@ -169,7 +169,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                     <Button
                       variant="outline"
                       size="icon"
-                      className="rounded-full border-white/10 bg-white/[0.04]"
+                      className="border-white/10 bg-white/[0.04]"
                       onClick={() => setQuantity((value) => Math.max(1, value - 1))}
                       disabled={quantity <= 1}
                     >
@@ -179,7 +179,7 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
                     <Button
                       variant="outline"
                       size="icon"
-                      className="rounded-full border-white/10 bg-white/[0.04]"
+                      className="border-white/10 bg-white/[0.04]"
                       onClick={() => setQuantity((value) => value + 1)}
                     >
                       <Plus className="h-4 w-4" />
@@ -220,12 +220,12 @@ const AddToCartModal: React.FC<AddToCartModalProps> = ({ open, onOpenChange, ite
             <DialogFooter>
               <Button
                 variant="outline"
-                className="rounded-full border-white/10 bg-white/[0.04]"
+                className="border-white/10 bg-white/[0.04]"
                 onClick={() => onOpenChange(false)}
               >
                 {t("addToCart.cancel")}
               </Button>
-              <Button className="rounded-full" onClick={handleAddToCart}>
+              <Button onClick={handleAddToCart}>
                 {t("addToCart.confirm")}
               </Button>
             </DialogFooter>

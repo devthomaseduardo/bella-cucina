@@ -101,14 +101,12 @@ const MenuItem = ({
                 Detalhes
               </span>
               <Button
-                size="sm"
-                className="h-9 rounded-full px-4 text-xs"
                 onClick={(event) => {
                   event.stopPropagation();
                   setIsModalOpen(true);
                 }}
               >
-                <Plus className="mr-1.5 h-3.5 w-3.5" aria-hidden />
+                <Plus className="h-4 w-4" aria-hidden />
                 {t("menu.addToOrder")}
               </Button>
             </div>

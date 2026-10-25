@@ -147,7 +147,7 @@ const ReservationForm = ({
             )}
           />
 
-          <Button type="submit" className="mt-2 w-full rounded-full sm:w-auto sm:px-8">
+          <Button type="submit" className="mt-2 w-full sm:w-auto sm:px-8">
             Enviar solicitação
           </Button>
         </form>

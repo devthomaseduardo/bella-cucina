@@ -227,7 +227,10 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                     <div>
                       <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">Resumo</p>
                       <p className="mt-1 text-sm text-muted-foreground">
-                        {submittedItems.reduce((sum, item) => sum + item.quantity, 0)} itens enviados
+                        {(() => {
+                          const count = submittedItems.reduce((sum, item) => sum + item.quantity, 0);
+                          return count === 1 ? "1 item enviado" : `${count} itens enviados`;
+                        })()}
                       </p>
                     </div>
                     <p className="font-display text-3xl text-foreground">{formatPrice(submittedTotal)}</p>
@@ -236,7 +239,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
               </div>
             )}
 
-            <Button className="mt-4 w-full rounded-full" onClick={finishConfirmation}>
+            <Button className="mt-4 w-full" onClick={finishConfirmation}>
               Continuar no cardápio
             </Button>
           </div>
@@ -330,7 +333,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                                     {item.customerName ? ` · Para ${item.customerName}` : ""}
                                   </p>
                                 </div>
-                                <Button variant="ghost" size="icon" onClick={() => removeItem(item.id)} aria-label={`Remover ${item.name}`}>
+                                <Button variant="ghost" size="icon" className="-mr-2 -mt-2 shrink-0" onClick={() => removeItem(item.id)} aria-label={`Remover ${item.name}`}>
                                   <Trash2 className="h-4 w-4 text-destructive" />
                                 </Button>
                               </div>
@@ -363,28 +366,30 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                                       Obs: {item.notes}
                                     </p>
                                   )}
-                                  <div className="mt-3 flex items-center justify-between">
+                                  <div className="mt-3 flex flex-wrap items-center justify-between gap-x-2 gap-y-1">
                                     <div className="flex items-center gap-2">
                                       <Button
                                         variant="outline"
                                         size="icon"
-                                        className="h-7 w-7 rounded-full border-white/10 bg-white/[0.04]"
+                                        className="h-9 w-9"
                                         onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                        aria-label={`Diminuir ${item.name}`}
                                       >
-                                        <Minus className="h-3 w-3" />
+                                        <Minus className="h-4 w-4" />
                                       </Button>
                                       <span className="w-7 text-center text-sm">{item.quantity}</span>
                                       <Button
                                         variant="outline"
                                         size="icon"
-                                        className="h-7 w-7 rounded-full border-white/10 bg-white/[0.04]"
+                                        className="h-9 w-9"
                                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                        aria-label={`Aumentar ${item.name}`}
                                       >
-                                        <Plus className="h-3 w-3" />
+                                        <Plus className="h-4 w-4" />
                                       </Button>
                                     </div>
-                                    <Button variant="ghost" size="sm" onClick={() => startEditingNotes(item)}>
-                                      <Edit className="mr-1 h-3 w-3" /> Observação
+                                    <Button variant="ghost" size="sm" className="px-2" onClick={() => startEditingNotes(item)}>
+                                      <Edit className="h-4 w-4" aria-hidden /> Observação
                                     </Button>
                                   </div>
                                 </>
@@ -400,13 +405,13 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                 <div className="mt-4 border-t border-white/10 pt-4">
                   <div className="mb-4 flex items-end justify-between">
                     <div>
-                      <p className="text-xs text-muted-foreground">{totalItems} itens</p>
+                      <p className="text-xs text-muted-foreground">{totalItems === 1 ? "1 item" : `${totalItems} itens`}</p>
                       <p className="text-sm font-medium">Total</p>
                     </div>
                     <span className="font-display text-3xl">{formatPrice(totalPrice)}</span>
                   </div>
                   <DialogFooter className="flex-col gap-2 sm:flex-col">
-                    <Button onClick={handleCheckout} className="w-full rounded-full" disabled={isSubmitting || requiresQr}>
+                    <Button onClick={handleCheckout} className="w-full" disabled={isSubmitting || requiresQr}>
                       {isSubmitting ? "Enviando pedido..." : "Enviar pedido"}
                     </Button>
                     <Button

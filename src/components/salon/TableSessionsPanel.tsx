@@ -123,7 +123,7 @@ export default function TableSessionsPanel() {
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="rounded-full"
+                 
                   onClick={() => void closeSession(session.id)}
                   disabled={!allDelivered}
                   title={

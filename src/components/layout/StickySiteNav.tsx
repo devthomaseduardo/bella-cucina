@@ -83,7 +83,7 @@ export function StickySiteNav() {
             <button
               type="button"
               onClick={() => go("/cardapio")}
-              className="hidden text-xs font-semibold uppercase tracking-[0.16em] text-white/70 min-[390px]:block"
+              className="hidden px-2 py-3 text-xs font-semibold uppercase tracking-[0.16em] text-white/70 min-[390px]:block"
             >
               Cardápio
             </button>
@@ -94,7 +94,7 @@ export function StickySiteNav() {
                   type="button"
                   variant="ghost"
                   size="icon"
-                  className="h-9 w-9 rounded-full bg-white/10 text-white hover:bg-white/15 hover:text-white"
+                  className="bg-white/10 text-white hover:bg-white/15 hover:text-white"
                   aria-label={t("nav.openMenu")}
                 >
                   {mobileOpen ? <X className="h-[18px] w-[18px]" aria-hidden /> : <Menu className="h-[18px] w-[18px]" aria-hidden />}

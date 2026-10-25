@@ -169,7 +169,7 @@ function SalonBoard() {
                   )}
 
                   <Button
-                    className="mt-5 w-full rounded-full"
+                    className="mt-5 w-full"
                     onClick={() => void markDelivered(item)}
                   >
                     Marcar como entregue

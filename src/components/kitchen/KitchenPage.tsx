@@ -143,7 +143,7 @@ function KitchenBoard() {
                 <div className="mt-5 flex gap-2">
                   {item.status === "pending" ? (
                     <Button
-                      className="w-full rounded-full"
+                      className="w-full"
                       onClick={() => void updateStatus(item, "preparing")}
                     >
                       <ChefHat className="mr-2 h-4 w-4" />
@@ -151,7 +151,7 @@ function KitchenBoard() {
                     </Button>
                   ) : (
                     <Button
-                      className="w-full rounded-full"
+                      className="w-full"
                       onClick={() => void updateStatus(item, "ready")}
                     >
                       <Check className="mr-2 h-4 w-4" />

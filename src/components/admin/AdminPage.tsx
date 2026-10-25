@@ -233,7 +233,7 @@ const AdminPageContent = () => {
             <Button
               asChild
               variant="outline"
-              className="mb-5 rounded-full border-white/10 bg-white/[0.045]"
+              className="mb-5 border-white/10 bg-white/[0.045]"
             >
               <Link to="/menu">
                 <ArrowLeft className="mr-2 h-4 w-4" aria-hidden />
@@ -270,7 +270,7 @@ const AdminPageContent = () => {
             <Button
               type="button"
               variant="outline"
-              className="rounded-full border-white/10 bg-white/[0.045]"
+              className="border-white/10 bg-white/[0.045]"
               onClick={() => void loadRemoteOrders()}
             >
               <RefreshCw className="mr-2 h-4 w-4" aria-hidden />
@@ -394,7 +394,7 @@ const AdminPageContent = () => {
                         {next && (
                           <Button
                             type="button"
-                            className="rounded-full"
+                           
                             onClick={() => void handleStatusChange(order.id, next.status)}
                           >
                             {next.label}
@@ -404,7 +404,7 @@ const AdminPageContent = () => {
                           <Button
                             type="button"
                             variant="outline"
-                            className="rounded-full border-red-400/25 bg-red-400/10 text-red-100 hover:bg-red-400/15"
+                            className="border-red-400/25 bg-red-400/10 text-red-100 hover:bg-red-400/15"
                             onClick={() => void handleStatusChange(order.id, "cancelled")}
                           >
                             Cancelar pedido

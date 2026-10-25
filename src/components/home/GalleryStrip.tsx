@@ -63,7 +63,7 @@ const GalleryStrip = () => {
   );
 
   return (
-    <section id="featured" className="relative w-full scroll-mt-20 overflow-hidden bg-background py-14 sm:py-16 md:py-24">
+    <section id="featured" className="relative w-full scroll-mt-20 overflow-hidden bg-background py-16 md:py-24">
       <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 22 }}

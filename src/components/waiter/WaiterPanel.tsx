@@ -516,7 +516,7 @@
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-8 w-8"
                             onClick={() =>
                               handleUpdateItemQuantity(item.id, item.quantity - 1)
                             }
@@ -527,7 +527,7 @@
                           <Button
                             variant="outline"
                             size="icon"
-                            className="h-6 w-6"
+                            className="h-8 w-8"
                             onClick={() =>
                               handleUpdateItemQuantity(item.id, item.quantity + 1)
                             }

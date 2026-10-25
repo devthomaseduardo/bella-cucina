@@ -95,7 +95,7 @@ const ReservationSection = ({
   };
 
   return (
-    <section id="reservations" className="relative scroll-mt-20 overflow-hidden bg-muted/20 py-14 sm:py-16 md:py-24">
+    <section id="reservations" className="relative scroll-mt-20 overflow-hidden bg-muted/20 py-16 md:py-24">
       <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           <motion.div
@@ -233,7 +233,7 @@ const ReservationSection = ({
                     </div>
                   )}
 
-                  <Button type="button" variant="ghost" onClick={resetReservation} className="mt-6 rounded-full px-0 text-foreground hover:bg-transparent hover:text-primary">
+                  <Button type="button" variant="ghost" onClick={resetReservation} className="mt-6 px-0 text-foreground hover:bg-transparent hover:text-primary">
                     Fazer outra reserva
                   </Button>
                 </div>

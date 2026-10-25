@@ -101,7 +101,7 @@ const WaiterLogin = ({
             onChange={(event) => setPassword(event.target.value)}
             required
           />
-          <Button type="submit" className="w-full rounded-full" disabled={loading}>
+          <Button type="submit" className="w-full" disabled={loading}>
             {loading ? "Entrando..." : "Entrar"}
           </Button>
         </form>

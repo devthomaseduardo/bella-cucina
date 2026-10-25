@@ -85,7 +85,7 @@ const HeroSection = ({
             <Button
               size="lg"
               onClick={onCtaClick}
-              className="h-12 rounded-full bg-primary px-7 text-sm font-semibold text-primary-foreground shadow-[0_18px_50px_-20px_hsl(var(--primary))] transition hover:bg-primary/90 hover:shadow-[0_22px_60px_-18px_hsl(var(--primary))]"
+              className="bg-primary text-primary-foreground shadow-[0_18px_50px_-20px_hsl(var(--primary))] transition hover:bg-primary/90 hover:shadow-[0_22px_60px_-18px_hsl(var(--primary))]"
             >
               {ctaText}
               <ArrowRight className="ml-2 h-4 w-4" aria-hidden />
@@ -94,7 +94,7 @@ const HeroSection = ({
               variant="outline"
               size="lg"
               onClick={onSecondaryCtaClick}
-              className="h-12 rounded-full border-white/20 bg-white/[0.06] px-7 text-sm font-semibold text-white backdrop-blur-md transition hover:border-white/35 hover:bg-white/[0.12] hover:text-white"
+              className="border-white/20 bg-white/[0.06] text-white backdrop-blur-md transition hover:border-white/35 hover:bg-white/[0.12] hover:text-white"
             >
               {secondaryCtaText}
             </Button>
