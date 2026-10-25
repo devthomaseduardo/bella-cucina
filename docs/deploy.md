@@ -2,34 +2,32 @@
 
 O front é uma SPA estática. O [vercel.json](../vercel.json) redireciona todas as rotas para `index.html`.
 
-## Pipeline (GitHub Actions)
+## Pipeline
 
-| Evento | O que roda |
-|--------|-----------|
-| Pull request | CI (typecheck, lint, testes, build) → deploy de **preview** na Vercel → comentário no PR com a URL |
-| Push na `main` | CI → `supabase db push` (migrations) → deploy de **produção** na Vercel |
+| Evento | GitHub Actions | Vercel (integração GitHub) |
+|--------|----------------|----------------------------|
+| Pull request | CI: typecheck, lint, audit, testes, build | Deploy de **preview** com link no PR |
+| Push na `main` | CI → `supabase db push` (migrations) | Deploy de **produção** |
 
-Arquivos: [.github/workflows/ci.yml](../.github/workflows/ci.yml) e [.github/workflows/cd.yml](../.github/workflows/cd.yml).
+Arquivos: [.github/workflows/ci.yml](../.github/workflows/ci.yml), [.github/workflows/cd.yml](../.github/workflows/cd.yml) e [.github/workflows/codeql.yml](../.github/workflows/codeql.yml).
 
-### Secrets necessários
+A `main` é protegida: o check **ci / Typecheck, lint, test, build** precisa passar antes do merge.
 
-Em **Settings → Secrets and variables → Actions**:
+### Secrets das migrations
+
+Em **Settings → Environments → production**, crie:
 
 | Secret | Onde obter |
 |--------|-----------|
-| `VERCEL_TOKEN` | Vercel → Account Settings → Tokens |
-| `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID` | `.vercel/project.json`, gerado por `vercel link` |
 | `SUPABASE_ACCESS_TOKEN` | Supabase → Account → Access Tokens |
 | `SUPABASE_PROJECT_ID` | ID do projeto de produção |
 | `SUPABASE_DB_PASSWORD` | Senha do banco de produção |
 
-Sem os secrets do Supabase, o passo de migrations é pulado com um aviso. Crie os ambientes `preview` e `production` em **Settings → Environments**. Em `production`, dá para exigir aprovação manual antes do deploy.
+Sem esses secrets, o passo de migrations é pulado com um aviso.
 
-> Se o projeto Vercel estiver conectado ao GitHub pela integração nativa, desative os deploys automáticos dela (**Settings → Git → Ignored Build Step**: `exit 0`) para não fazer deploy duas vezes.
+> A Vercel publica a produção em paralelo com as migrations. Quando uma mudança de front depender de uma migration nova, mescle primeiro a migration e só depois o front.
 
-Proteja a `main` exigindo o check **CD / ci / Typecheck, lint, test, build** antes do merge.
-
-## Vercel (manual)
+## Vercel
 
 1. Importe o repositório na Vercel (framework: Vite, build `npm run build`, saída `dist`).
 2. Configure as variáveis em **Production** e **Preview**:
