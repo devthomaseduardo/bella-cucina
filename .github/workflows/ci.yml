@@ -5,6 +5,9 @@ on:
   workflow_call:
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   check:
     name: Typecheck, lint, test, build
@@ -18,6 +21,9 @@ jobs:
           cache: npm
 
       - run: npm ci
+
+      - name: Audit dependencies
+        run: npm audit --audit-level=high
 
       - name: Typecheck
         run: npm run typecheck
