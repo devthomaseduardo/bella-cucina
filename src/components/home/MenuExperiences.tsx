@@ -59,7 +59,8 @@ export function MenuExperiences() {
           </p>
         </motion.div>
 
-        <div className="mt-10 grid gap-4 md:grid-cols-3">
+        {/* Phones: horizontal snap carousel; desktop: three-column grid. */}
+        <div className="-mx-4 mt-8 flex snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-2 [scrollbar-width:none] sm:mx-0 sm:px-0 md:mt-10 md:grid md:grid-cols-3 md:gap-4 md:overflow-visible [&::-webkit-scrollbar]:hidden">
           {cards.map((c, index) => (
               <motion.button
               key={c.key}
@@ -74,7 +75,7 @@ export function MenuExperiences() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
               className={cn(
-                  "group relative min-h-[28rem] overflow-hidden rounded-[1.5rem] border border-white/10 text-left",
+                  "group relative w-[82vw] max-w-[22rem] shrink-0 snap-start overflow-hidden rounded-[1.5rem] border border-white/10 text-left md:w-auto md:max-w-none",
                   "bg-white/[0.045] shadow-[0_24px_80px_-56px_rgba(0,0,0,0.9)] transition duration-300",
                   "hover:-translate-y-1 hover:border-primary/35 hover:bg-white/[0.065]",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
@@ -91,11 +92,9 @@ export function MenuExperiences() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/86 via-transparent to-transparent" />
               </div>
 
-                <div className="relative z-10 flex h-full min-h-[28rem] flex-col justify-between p-5 sm:p-6">
+                <div className="relative z-10 flex h-full min-h-[22rem] flex-col justify-between p-5 sm:p-6 md:min-h-[26rem]">
                   <div className="flex items-center justify-between">
-                    <span className="rounded-full border border-white/15 bg-white/[0.08] px-3 py-1 text-xs uppercase tracking-[0.16em] text-white/70 backdrop-blur">
-                  Bella Cucina
-                    </span>
+                    <span />
                     <span className="grid h-10 w-10 place-items-center rounded-full border border-white/15 bg-black/40 font-display text-lg text-[hsl(var(--accent))] backdrop-blur">
                       {c.code}
                     </span>

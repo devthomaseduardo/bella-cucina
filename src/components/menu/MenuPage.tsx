@@ -28,12 +28,7 @@ const MenuPageContent = () => {
         </section>
       </main>
 
-      <Footer
-        restaurantName="Bella Cucina"
-        address="Jardins, São Paulo"
-        phone="(11) 1234-5678"
-        email="contato@bellacucina.com"
-      />
+      <Footer />
 
       <FloatingActions showWaiterAction={false} />
     </div>

@@ -16,7 +16,7 @@ const SECTION_LINKS = [
   { href: "#", key: "home" as const },
   { href: "/cardapio", key: "menu" as const },
   { href: "#reservations", key: "reservations" as const },
-  { href: "#about", key: "about" as const },
+  { href: "#cucina", key: "about" as const },
   { href: "#contact", key: "contact" as const },
 ];
 

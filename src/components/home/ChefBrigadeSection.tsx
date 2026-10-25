@@ -4,10 +4,6 @@ import { motion, useReducedMotion } from "framer-motion";
 
 const CHEF_IMG =
   "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=1100&q=85";
-const KITCHEN_IMG =
-  "https://upload.wikimedia.org/wikipedia/commons/3/3b/Chef_Joshua_Skenes_Inside_the_Chef%27s_Counter_Kitchen_2.jpg";
-const BRIGADE_IMG =
-  "https://upload.wikimedia.org/wikipedia/commons/c/c7/Chefs_Kitchen_Princetown_New_Jersey_picture.jpg";
 
 export function ChefBrigadeSection() {
   const { t } = useI18n();
@@ -28,25 +24,14 @@ export function ChefBrigadeSection() {
               <img
                 src={CHEF_IMG}
                 alt={t("chef.imageChefAlt")}
-                className="aspect-[3/4] w-full object-cover object-top"
-                loading="eager"
+                className="aspect-[4/3] w-full object-cover object-top lg:aspect-[3/4]"
+                loading="lazy"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/86 via-black/30 to-transparent p-6 pt-28 text-white">
-                <p className="text-xs uppercase tracking-[0.16em] text-white/68">
-                  {t("chef.kicker")}
-                </p>
-                <p className="mt-1 font-display text-3xl">{t("chef.role")}</p>
+                <p className="font-display text-2xl sm:text-3xl">{t("chef.role")}</p>
               </div>
             </div>
 
-            <div className="absolute -right-5 top-8 hidden w-44 overflow-hidden rounded-2xl border border-white/10 bg-black shadow-2xl md:block lg:-right-10">
-              <img
-                src={KITCHEN_IMG}
-                alt={t("chef.imageKitchenAlt")}
-                className="aspect-square h-full w-full object-cover"
-                loading="lazy"
-              />
-            </div>
           </motion.div>
 
           <motion.div
@@ -83,37 +68,18 @@ export function ChefBrigadeSection() {
               </div>
             </div>
 
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/[0.045]">
-                <img
-                  src={BRIGADE_IMG}
-                  alt={t("chef.imageBrigadeAlt")}
-                  className="aspect-video w-full object-cover md:aspect-[16/10]"
-                  loading="lazy"
-                />
-                <div className="border-t border-white/10 bg-black/20 px-4 py-3 text-xs text-muted-foreground backdrop-blur-sm">
-                  {t("chef.brigadeCaption")}
-                </div>
-              </div>
-              <div className="flex flex-col justify-center rounded-2xl border border-white/10 bg-white/[0.045] p-6">
-                <h3 className="font-display text-xl text-foreground">
-                  {t("chef.valuesTitle")}
-                </h3>
-                <ul className="mt-4 space-y-3 text-sm leading-relaxed text-muted-foreground">
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-primary">01</span>
-                    {t("chef.value1")}
+            <div className="mt-8 border-t border-white/10 pt-6">
+              <h3 className="font-display text-xl text-foreground">{t("chef.valuesTitle")}</h3>
+              <ul className="mt-4 grid gap-3 text-sm leading-relaxed text-muted-foreground sm:grid-cols-3">
+                {(["value1", "value2", "value3"] as const).map((key, index) => (
+                  <li key={key} className="flex gap-3">
+                    <span className="font-display text-lg leading-none text-primary">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    {t(`chef.${key}`)}
                   </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-primary">02</span>
-                    {t("chef.value2")}
-                  </li>
-                  <li className="flex gap-3">
-                    <span className="font-semibold text-primary">03</span>
-                    {t("chef.value3")}
-                  </li>
-                </ul>
-              </div>
+                ))}
+              </ul>
             </div>
           </motion.div>
         </div>

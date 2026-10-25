@@ -40,7 +40,7 @@ const pt: TranslationTree = {
     kicker: "Ambiente & oficina",
     caption: {
       "1": "Salão principal ao entardecer",
-      "2": "Estação de massas frescas",
+      "2": "Terraço para jantar ao ar livre",
       "3": "Linha quente, brasa e brassagem",
       "4": "Mesa posta para o ritual",
       "5": "Pratos al forno e guisados lentos",
@@ -225,7 +225,7 @@ const en: TranslationTree = {
     kicker: "Room & workshop",
     caption: {
       "1": "Main dining room at dusk",
-      "2": "Fresh pasta station",
+      "2": "Terrace for open-air dining",
       "3": "Hot line, embers and braises",
       "4": "Table set for the ritual",
       "5": "Wood-oven dishes & slow stews",
@@ -407,7 +407,7 @@ const it: TranslationTree = {
     kicker: "Sala & laboratorio",
     caption: {
       "1": "Sala principale al tramonto",
-      "2": "Stazione pasta fresca",
+      "2": "Terrazza per cenare all’aperto",
       "3": "Linea calda, brace e brasati",
       "4": "Tavola apparecchiata per il rito",
       "5": "Piatti al forno e stufati lenti",
