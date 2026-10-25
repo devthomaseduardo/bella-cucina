@@ -13,6 +13,20 @@ updates:
       runtime-dependencies:
         dependency-type: production
         update-types: [minor, patch]
+    ignore:
+      # Major upgrades that need a dedicated migration (config, plugins, routing).
+      - dependency-name: tailwindcss
+        update-types: [version-update:semver-major]
+      - dependency-name: vite
+        update-types: [version-update:semver-major]
+      - dependency-name: "@vitejs/*"
+        update-types: [version-update:semver-major]
+      - dependency-name: react-router-dom
+        update-types: [version-update:semver-major]
+      - dependency-name: react
+        update-types: [version-update:semver-major]
+      - dependency-name: react-dom
+        update-types: [version-update:semver-major]
     commit-message:
       prefix: chore(deps)
 
