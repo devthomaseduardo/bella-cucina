@@ -56,7 +56,7 @@ const HeroSection = ({
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 pb-10 pt-28 sm:px-6 sm:pb-14 md:px-8 md:pb-16 lg:justify-center lg:pb-20">
+      <div className="relative z-10 mx-auto flex min-h-[100svh] max-w-screen-2xl flex-col justify-end px-5 pb-10 pt-28 sm:px-6 sm:pb-14 md:px-8 md:pb-16 lg:justify-center lg:pb-20">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}
           animate={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}

@@ -80,7 +80,7 @@ const HomePageContent = () => {
 
         <section id="about" className="relative scroll-mt-24 overflow-hidden bg-muted/25 py-16 md:py-24">
           <div className="absolute inset-0 bella-grid-bg opacity-20" aria-hidden />
-          <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
             <div className="grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
               <motion.div
                 initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}
@@ -157,7 +157,7 @@ const HomePageContent = () => {
         </section>
 
         <section id="contact" className="scroll-mt-24 bg-background py-16 md:py-24">
-          <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
             <div className="grid gap-10 lg:grid-cols-12 lg:items-start">
               <motion.div
                 initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}

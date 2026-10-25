@@ -17,7 +17,7 @@ const Footer = ({
 }: FooterProps) => {
   return (
     <footer className="w-full bg-[#080706] px-4 pb-8 pt-14 text-white sm:px-6 sm:pt-16 md:px-8 md:pt-20">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto max-w-screen-2xl">
         <div className="grid gap-10 border-b border-white/10 pb-12 lg:grid-cols-[1.25fr_0.75fr] lg:items-end">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.26em] text-primary">Bella Cucina</p>

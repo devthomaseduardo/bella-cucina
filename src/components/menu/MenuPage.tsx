@@ -13,7 +13,7 @@ const MenuPageContent = () => {
       <StickySiteNav />
 
       <main className="min-w-0 pt-20 sm:pt-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
           <Link
             to="/menu"
             className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition hover:text-foreground"

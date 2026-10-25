@@ -49,7 +49,7 @@ const LanguageSelectPage = () => {
         />
       </div>
 
-      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-6xl flex-col justify-center px-6 py-16 md:px-8 lg:py-20">
+      <div className="relative z-10 mx-auto flex min-h-[100dvh] max-w-screen-2xl flex-col justify-center px-6 py-16 md:px-8 lg:py-20">
         <div className="grid items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 28 }}

@@ -40,7 +40,7 @@ export function MenuExperiences() {
       className="relative scroll-mt-24 overflow-hidden border-y border-white/10 bg-muted/30 py-16 md:py-24"
     >
       <div className="absolute inset-0 bella-grid-bg opacity-25" aria-hidden />
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 1, y: 24 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}

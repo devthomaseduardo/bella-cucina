@@ -15,7 +15,7 @@ export function ChefBrigadeSection() {
 
   return (
     <section id="cucina" className="relative scroll-mt-24 overflow-hidden bg-background py-16 md:py-24">
-      <div className="container mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-12">
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 1, x: -28 }}

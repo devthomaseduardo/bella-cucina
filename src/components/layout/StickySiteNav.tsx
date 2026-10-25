@@ -64,7 +64,7 @@ export function StickySiteNav() {
 
   return (
     <header className="pointer-events-none fixed inset-x-0 top-0 z-50 px-3 pt-[max(0.55rem,env(safe-area-inset-top))] sm:px-4">
-      <div className="pointer-events-auto mx-auto max-w-7xl">
+      <div className="pointer-events-auto mx-auto max-w-screen-2xl">
         <div
           className={cn(
             "flex h-12 items-center justify-between transition-all duration-300 md:hidden",

@@ -96,7 +96,7 @@ const ReservationSection = ({
 
   return (
     <section id="reservations" className="relative scroll-mt-20 overflow-hidden bg-muted/20 py-14 sm:py-16 md:py-24">
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <div className="grid items-start gap-8 lg:grid-cols-12 lg:gap-12">
           <motion.div
             initial={shouldReduceMotion ? false : { opacity: 0, y: 22 }}
