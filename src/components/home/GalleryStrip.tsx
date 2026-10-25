@@ -46,7 +46,7 @@ const GalleryStrip = () => {
   );
 
   return (
-    <section id="galeria" className="relative w-full scroll-mt-20 overflow-hidden bg-background py-16 md:py-24">
+    <section id="galeria" className="section-cream grain relative w-full scroll-mt-20 overflow-hidden py-16 md:py-24">
       <div className="container mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={shouldReduceMotion ? false : { opacity: 0, y: 22 }}
@@ -91,9 +91,9 @@ const GalleryStrip = () => {
                 loading="lazy"
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.04]"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
               <figcaption className="absolute inset-x-0 bottom-0 p-3 sm:p-4">
-                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-[hsl(var(--accent))]">
+                <span className="text-xs font-semibold uppercase tracking-[0.16em] text-amber-200">
                   {item.tone}
                 </span>
                 {index === 0 && (
