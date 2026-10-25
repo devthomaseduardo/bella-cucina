@@ -16,7 +16,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Label } from "@/components/ui/label";
 import { getMenuItemDetails } from "@/data/menu-item-details";
-import { getTableTokenFromUrl } from "@/lib/table-session";
+import { getTableToken, hasSupabaseConfig } from "@/lib/table-session";
 import { formatPrice } from "@/lib/format";
 
 interface CartModalProps {
@@ -42,7 +42,9 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
     addOrder,
   } = useCart();
 
-  const tableToken = getTableTokenFromUrl();
+  const tableToken = getTableToken();
+  // With a real backend, the table always comes from the QR code.
+  const requiresQr = hasSupabaseConfig && !tableToken;
   const [editingItemId, setEditingItemId] = useState<string | null>(null);
   const [itemNotes, setItemNotes] = useState("");
   const [localTableNumber, setLocalTableNumber] = useState(
@@ -73,6 +75,10 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
 
   const handleCheckout = async () => {
     if (isSubmitting) return;
+    if (requiresQr) {
+      notify("Escaneie o QR code da sua mesa para fazer o pedido.");
+      return;
+    }
     if (!tableToken && !localTableNumber.trim()) {
       notify("Informe o número da sua mesa.");
       return;
@@ -104,6 +110,13 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
       setSubmittedTotal(snapshotTotal);
       setCreatedOrderId(orderId);
       setOrderSuccess(true);
+    } catch (error) {
+      console.error("Failed to place order", error);
+      notify(
+        error instanceof Error && error.message.startsWith("Escaneie")
+          ? error.message
+          : "Não foi possível enviar o pedido. Tente novamente ou chame o garçom.",
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -139,7 +152,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                   <div>
                     <div className="flex items-center gap-2 font-medium text-foreground">
                       <ReceiptText className="h-4 w-4 text-primary" aria-hidden />
-                      Pedido #{createdOrderId}
+                      Pedido #{createdOrderId.slice(0, 6).toUpperCase()}
                     </div>
                     <p className="mt-1 text-xs text-muted-foreground">
                       {tableToken ? "Mesa identificada pelo QR" : `Mesa ${localTableNumber}`} · {localCustomerName}
@@ -251,7 +264,16 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
               <>
                 <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                   <div>
-                    {tableToken ? (
+                    {requiresQr ? (
+                      <div className="rounded-2xl border border-amber-300/20 bg-amber-300/[0.06] p-3">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-amber-200">
+                          Mesa não identificada
+                        </p>
+                        <p className="mt-1 text-sm text-muted-foreground">
+                          Escaneie o QR code da sua mesa com a câmera do celular para enviar o pedido.
+                        </p>
+                      </div>
+                    ) : tableToken ? (
                       <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.06] p-3">
                         <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-emerald-200">
                           Mesa validada
@@ -384,7 +406,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                     <span className="font-display text-3xl">{formatPrice(totalPrice)}</span>
                   </div>
                   <DialogFooter className="flex-col gap-2 sm:flex-col">
-                    <Button onClick={handleCheckout} className="w-full rounded-full" disabled={isSubmitting}>
+                    <Button onClick={handleCheckout} className="w-full rounded-full" disabled={isSubmitting || requiresQr}>
                       {isSubmitting ? "Enviando pedido..." : "Enviar pedido"}
                     </Button>
                     <Button

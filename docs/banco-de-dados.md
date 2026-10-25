@@ -9,6 +9,7 @@ O schema fica em [supabase/migrations](../supabase/migrations). As migrations s�
 | `00003_harden_anonymous_customer_rls.sql` | `is_staff_session()`: separa clientes anônimos de staff |
 | `00004_join_table_from_qr_token.sql` | `join_table_session_by_token`: entrada pela mesa via QR |
 | `00005_staff_table_access.sql` | Staff pode ler `restaurant_tables` |
+| `00006_staff_roles_and_server_pricing.sql` | Papéis de staff, `place_order` com preço do servidor, fim da entrada por número, correção do `join_table_session_by_token` |
 
 ## Tabelas
 
@@ -27,13 +28,14 @@ reservations (independente)
 | Tabela | Descrição | Campos importantes |
 |--------|-----------|--------------------|
 | `menu_categories` | Categorias do cardápio | `name_pt/en/it`, `order` |
-| `menu_items` | Pratos | `name_*`, `description_*`, `price`, `dietary[]`, `popular` |
+| `menu_items` | Pratos | `slug` (mesmo id do front), `name_*`, `description_*`, `price`, `available`, `popular` |
 | `restaurant_tables` | Mesas físicas | `number` (único), `qr_token` (único, secreto), `active` |
 | `table_sessions` | Ocupação de uma mesa | `status`: `open`, `payment_pending`, `closed`. Índice único garante uma sessão aberta por mesa |
 | `table_guests` | Pessoa na sessão | `user_id` (usuário anônimo), `name` |
 | `orders` | Pedido | `session_id`, `guest_id`, `status`, `total_price` |
 | `order_items` | Item do pedido | `status` por item, `notes`, `customer_name` |
 | `reservations` | Reservas online | `datetime_iso`, `party_size`, `status` |
+| `staff_members` | Contas da equipe | `user_id`, `role` (`waiter`, `kitchen`, `admin`), `active` |
 
 Status de pedido e item: `pending` → `preparing` → `ready` → `delivered` (ou `cancelled`).
 
@@ -42,17 +44,18 @@ Status de pedido e item: `pending` → `preparing` → `ready` → `delivered` (
 | Função | Quem chama | O que faz |
 |--------|------------|-----------|
 | `join_table_session_by_token(p_table_token, p_guest_name)` | Cliente anônimo | Valida o QR, abre ou reaproveita a sessão aberta e cria ou atualiza o convidado. Retorna `session_id`, `guest_id` e `table_number` |
-| `join_table_session(p_table_number, p_guest_name)` | *Legado* | Entra pelo número da mesa. **Será removida** ([#3](https://github.com/devthomaseduardo/bella-cucina/issues/3)) |
-| `is_staff_session()` | Policies | `true` para usuário autenticado **não anônimo** |
+| `place_order(p_session_id, p_guest_id, p_items)` | Cliente anônimo | Cria o pedido. Busca o preço de cada `slug` em `menu_items`, valida quantidade e se a sessão está aberta, e calcula o total. É a única forma de criar pedidos |
+| `is_staff_session()` | Policies | `true` se o usuário está ativo em `staff_members` |
+| `has_staff_role(p_roles)` | Policies | `true` se o usuário tem um dos papéis informados |
 
 ## Regras de acesso (RLS)
 
 | Recurso | Visitante | Cliente anônimo | Staff |
 |---------|:---------:|:---------------:|:-----:|
-| Cardápio | ler | ler | ler e escrever |
+| Cardápio | ler | ler | ler (admin escreve) |
 | Reservas | criar | criar | tudo |
 | Sessão / convidados | — | ler a **própria** sessão | ler e atualizar |
-| Pedidos e itens | — | criar e ler na **própria** sessão | ler e atualizar |
+| Pedidos e itens | — | criar via `place_order` e ler na **própria** sessão | ler e atualizar |
 | Mesas | — | — | ler |
 
 O cliente só enxerga dados de sessões das quais é convidado (`table_guests.user_id = auth.uid()`). Por isso uma sessão fechada não aparece para quem senta depois na mesma mesa.

@@ -85,8 +85,6 @@ const hasSupabaseConfig = Boolean(
   import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY,
 );
 
-const isUuid = (value: string) =>
-  /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(value);
 
 const readLocalStorage = (key: string) => {
   if (typeof window === "undefined") return null;
@@ -247,78 +245,42 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     if (!hasSupabaseConfig) return createLocalOrder();
 
-    try {
-      const tableSession = await ensureCustomerTableSession(
-        orderData.tableNumber,
-        orderData.customerName,
-      );
+    const tableSession = await ensureCustomerTableSession(orderData.customerName);
+    if (!tableSession) return createLocalOrder();
+    setCurrentTableSession(tableSession);
 
-      if (!tableSession) return createLocalOrder();
-      setCurrentTableSession(tableSession);
-
-      const { data: orderResult, error: orderError } = await supabase
-        .from("orders")
-        .insert({
-          table_number: tableSession.tableNumber,
-          customer_name: orderData.customerName,
-          status: orderData.status,
-          total_price: orderData.totalPrice,
-          session_id: tableSession.sessionId,
-          guest_id: tableSession.guestId,
-        })
-        .select()
-        .single();
-
-      if (orderError) throw orderError;
-
-      const orderId = orderResult.id;
-      const itemsToInsert = orderData.items.map((item) => ({
-        order_id: orderId,
-        menu_item_id: isUuid(item.id) ? item.id : null,
-        name: item.name,
-        price: item.price,
+    // Prices and totals are computed by the database from menu_items.
+    const { data: orderId, error } = await supabase.rpc("place_order", {
+      p_session_id: tableSession.sessionId,
+      p_guest_id: tableSession.guestId,
+      p_items: orderData.items.map((item) => ({
+        slug: item.id,
         quantity: item.quantity,
-        image_url: item.image,
-        category: item.category,
-        notes: item.notes,
-        customer_name: item.customerName || orderData.customerName,
-        session_id: tableSession.sessionId,
-        guest_id: tableSession.guestId,
+        notes: item.notes ?? "",
+        customer_name: item.customerName ?? "",
+      })),
+    });
+
+    if (error) throw error;
+
+    const now = new Date();
+    const newOrder: Order = {
+      ...orderData,
+      id: orderId as string,
+      tableNumber: tableSession.tableNumber,
+      sessionId: tableSession.sessionId,
+      guestId: tableSession.guestId,
+      items: orderData.items.map((item) => ({
+        ...item,
         status: "pending",
-      }));
-
-      const { error: itemsError } = await supabase
-        .from("order_items")
-        .insert(itemsToInsert);
-
-      if (itemsError) throw itemsError;
-
-      const now = new Date();
-      const newOrder: Order = {
-        ...orderData,
-        id: orderId,
-        sessionId: tableSession.sessionId,
         guestId: tableSession.guestId,
-        items: orderData.items.map((item) => ({
-          ...item,
-          status: "pending",
-          guestId: tableSession.guestId,
-        })),
-        createdAt: now,
-        updatedAt: now,
-      };
+      })),
+      createdAt: now,
+      updatedAt: now,
+    };
 
-      setOrders((prevOrders) => [...prevOrders, newOrder]);
-      return orderId;
-    } catch (error) {
-      console.error("Failed to add order", error);
-      setSuccessMessage(
-        "Não foi possível sincronizar o pedido. Verifique a configuração do Supabase.",
-      );
-      setShowSuccessToast(true);
-      setTimeout(() => setShowSuccessToast(false), 4000);
-      return createLocalOrder();
-    }
+    setOrders((prevOrders) => [...prevOrders, newOrder]);
+    return newOrder.id;
   };
 
   const importOrder = (order: Order) => {

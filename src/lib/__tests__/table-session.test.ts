@@ -49,6 +49,21 @@ describe("table-session", () => {
     expect(getTableTokenFromUrl()).toBe("tok-1");
   });
 
+  it("remembers the QR token after navigating away", async () => {
+    const { getTableToken } = await loadModule();
+    setUrl("?token=tok-1");
+    expect(getTableToken()).toBe("tok-1");
+    setUrl("");
+    expect(getTableToken()).toBe("tok-1");
+  });
+
+  it("refuses to join a table without a QR token", async () => {
+    const { ensureCustomerTableSession } = await loadModule();
+
+    await expect(ensureCustomerTableSession("Ana")).rejects.toThrow("Escaneie o QR code");
+    expect(rpc).not.toHaveBeenCalled();
+  });
+
   it("discards corrupted stored sessions", async () => {
     const { readCustomerTableSession } = await loadModule();
     window.localStorage.setItem(STORAGE_KEY, "{not json");
@@ -60,7 +75,7 @@ describe("table-session", () => {
     const { ensureCustomerTableSession } = await loadModule();
     setUrl("?token=tok-1");
 
-    const session = await ensureCustomerTableSession("", "  Ana ");
+    const session = await ensureCustomerTableSession("  Ana ");
 
     expect(rpc).toHaveBeenCalledWith("join_table_session_by_token", {
       p_table_token: "tok-1",
@@ -82,7 +97,7 @@ describe("table-session", () => {
     auth.signInAnonymously.mockResolvedValue({ data: { session: anonymousSession }, error: null });
     setUrl("?token=tok-1");
 
-    await ensureCustomerTableSession("", "Ana");
+    await ensureCustomerTableSession("Ana");
 
     expect(auth.signOut).toHaveBeenCalled();
     expect(auth.signInAnonymously).toHaveBeenCalled();
@@ -95,7 +110,7 @@ describe("table-session", () => {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
     maybeSingle.mockResolvedValue({ data: { id: "s0", status: "open" } });
 
-    const session = await ensureCustomerTableSession("", "ana");
+    const session = await ensureCustomerTableSession("ana");
 
     expect(session).toEqual(stored);
     expect(rpc).not.toHaveBeenCalled();
@@ -110,7 +125,7 @@ describe("table-session", () => {
     );
     maybeSingle.mockResolvedValue({ data: { id: "s0", status: "closed" } });
 
-    const session = await ensureCustomerTableSession("", "Ana");
+    const session = await ensureCustomerTableSession("Ana");
 
     expect(rpc).toHaveBeenCalledOnce();
     expect(session?.sessionId).toBe("s1");
@@ -121,6 +136,6 @@ describe("table-session", () => {
     setUrl("?token=bad");
     rpc.mockResolvedValue({ data: null, error: new Error("Invalid or inactive table QR token") });
 
-    await expect(ensureCustomerTableSession("", "Ana")).rejects.toThrow("Invalid or inactive");
+    await expect(ensureCustomerTableSession("Ana")).rejects.toThrow("Invalid or inactive");
   });
 });

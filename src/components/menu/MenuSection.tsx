@@ -53,9 +53,9 @@ const MenuSection = ({
       try {
         const { data, error } = await supabase
           .from("menu_items")
-          .select("*, menu_categories(name_en)")
-          .order("popular", { ascending: false })
-          .order("name_pt", { ascending: true });
+          .select("*, menu_categories(slug)")
+          .eq("available", true)
+          .order("order", { ascending: true });
 
         if (error) throw error;
         if (!active) return;
@@ -63,14 +63,15 @@ const MenuSection = ({
         if (data?.length) {
           setDbItems(
             data.map((row) => ({
-              id: row.id,
+              // The slug is shared with the static data (details, allergens) and place_order.
+              id: row.slug ?? row.id,
               name: row.name_pt || row.name_en,
               description: row.description_pt || row.description_en || "",
               price: Number(row.price),
               image:
                 row.image_url ||
                 "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&q=80",
-              category: (row.menu_categories?.name_en?.toLowerCase() || "specials") as MenuCategoryId,
+              category: (row.menu_categories?.slug || "specials") as MenuCategoryId,
               featured: Boolean(row.popular),
             })),
           );
@@ -116,7 +117,7 @@ const MenuSection = ({
 
   return (
     <div className="relative w-full min-w-0 overflow-hidden bg-background pb-20 pt-8 sm:pb-24 md:pt-12 lg:pb-28">
-      <div className="container relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div className="container relative mx-auto max-w-screen-2xl px-4 sm:px-6 lg:px-8">
         <motion.header
           initial={shouldReduceMotion ? false : { opacity: 0, y: 20 }}
           whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}

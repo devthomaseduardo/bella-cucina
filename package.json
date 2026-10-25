@@ -20,7 +20,11 @@
     "types:supabase": "npx supabase gen types typescript --project-id $SUPABASE_PROJECT_ID > src/types/supabase.ts",
     "test": "vitest run",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "db:seed:generate": "node scripts/generate-seed.mjs",
+    "db:start": "npx supabase start",
+    "db:reset": "npx supabase db reset",
+    "db:stop": "npx supabase stop"
   },
   "dependencies": {
     "@hookform/resolvers": "^6.0.0",

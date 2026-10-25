@@ -9,6 +9,7 @@ export type CustomerTableSession = {
 };
 
 const STORAGE_KEY = "bella:table-session";
+const TOKEN_STORAGE_KEY = "bella:table-token";
 
 export const hasSupabaseConfig = Boolean(
   import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY,
@@ -17,6 +18,21 @@ export const hasSupabaseConfig = Boolean(
 export function getTableTokenFromUrl() {
   if (typeof window === "undefined") return null;
   return new URLSearchParams(window.location.search).get("token");
+}
+
+/** QR token from the URL, remembered for the tab so navigating away keeps the table. */
+export function getTableToken() {
+  if (typeof window === "undefined") return null;
+  const fromUrl = getTableTokenFromUrl();
+  try {
+    if (fromUrl) {
+      window.sessionStorage.setItem(TOKEN_STORAGE_KEY, fromUrl);
+      return fromUrl;
+    }
+    return window.sessionStorage.getItem(TOKEN_STORAGE_KEY);
+  } catch {
+    return fromUrl;
+  }
 }
 
 export function readCustomerTableSession(): CustomerTableSession | null {
@@ -54,22 +70,21 @@ async function ensureAnonymousSession() {
 }
 
 export async function ensureCustomerTableSession(
-  tableNumber: string,
   guestName: string,
 ): Promise<CustomerTableSession | null> {
   if (!hasSupabaseConfig) return null;
 
+  const tableToken = getTableToken();
+  if (!tableToken) {
+    throw new Error("Escaneie o QR code da sua mesa para fazer o pedido.");
+  }
+
   await ensureAnonymousSession();
 
-  const tableToken = getTableTokenFromUrl();
   const stored = readCustomerTableSession();
-  const sameOrigin = tableToken
-    ? stored?.tableToken === tableToken
-    : stored?.tableNumber === tableNumber.trim();
-
   if (
     stored &&
-    sameOrigin &&
+    stored.tableToken === tableToken &&
     stored.guestName.toLocaleLowerCase("pt-BR") === guestName.trim().toLocaleLowerCase("pt-BR")
   ) {
     const { data: activeSession } = await supabase
@@ -78,22 +93,14 @@ export async function ensureCustomerTableSession(
       .eq("id", stored.sessionId)
       .maybeSingle();
 
-    if (activeSession?.status !== "closed") return stored;
+    if (activeSession && activeSession.status !== "closed") return stored;
     clearCustomerTableSession();
   }
 
-  const rpc = tableToken ? "join_table_session_by_token" : "join_table_session";
-  const params = tableToken
-    ? {
-        p_table_token: tableToken,
-        p_guest_name: guestName.trim(),
-      }
-    : {
-        p_table_number: tableNumber.trim(),
-        p_guest_name: guestName.trim(),
-      };
-
-  const { data, error } = await supabase.rpc(rpc, params);
+  const { data, error } = await supabase.rpc("join_table_session_by_token", {
+    p_table_token: tableToken,
+    p_guest_name: guestName.trim(),
+  });
   if (error) throw error;
 
   const joined = Array.isArray(data) ? data[0] : data;
@@ -104,7 +111,7 @@ export async function ensureCustomerTableSession(
   const session: CustomerTableSession = {
     sessionId: joined.session_id,
     guestId: joined.guest_id,
-    tableNumber: joined.table_number ?? tableNumber.trim(),
+    tableNumber: joined.table_number,
     guestName: guestName.trim(),
     tableToken,
   };
