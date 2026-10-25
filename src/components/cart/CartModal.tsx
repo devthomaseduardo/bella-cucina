@@ -40,6 +40,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
     setSuccessMessage,
     setShowSuccessToast,
     addOrder,
+    currentTableSession,
   } = useCart();
 
   const tableToken = getTableToken();
@@ -142,7 +143,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
               </div>
               <h2 className="font-display text-3xl text-foreground">Pedido enviado</h2>
               <p className="mx-auto mt-2 max-w-md text-sm leading-6 text-muted-foreground">
-                Confira abaixo o que foi enviado para a equipe antes de voltar ao cardápio.
+                A equipe já recebeu seu pedido. Acompanhe o preparo em Minha conta.
               </p>
             </div>
 
@@ -155,11 +156,11 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                       Pedido #{createdOrderId.slice(0, 6).toUpperCase()}
                     </div>
                     <p className="mt-1 text-xs text-muted-foreground">
-                      {tableToken ? "Mesa identificada pelo QR" : `Mesa ${localTableNumber}`} · {localCustomerName}
+                      {`Mesa ${currentTableSession?.tableNumber ?? localTableNumber}`} · {localCustomerName}
                     </p>
                   </div>
                   <span className="rounded-full border border-amber-400/20 bg-amber-400/10 px-3 py-1 text-xs font-semibold uppercase tracking-[0.12em] text-amber-100">
-                    Recebido pela equipe
+                    Aguardando confirmação
                   </span>
                 </div>
 
@@ -254,7 +255,7 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
 
             {items.length === 0 ? (
               <div className="py-8 text-center">
-                <p className="text-muted-foreground">Seu carrinho está vazio.</p>
+                <p className="text-muted-foreground">Seu pedido está vazio. Escolha um prato no cardápio e toque em Adicionar.</p>
                 <Button
                   variant="outline"
                   onClick={() => onOpenChange(false)}
@@ -279,10 +280,10 @@ const CartModal: React.FC<CartModalProps> = ({ open, onOpenChange }) => {
                     ) : tableToken ? (
                       <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.06] p-3">
                         <p className="text-xs font-semibold uppercase tracking-[0.16em] text-emerald-200">
-                          Mesa validada
+                          Mesa identificada
                         </p>
                         <p className="mt-1 text-sm text-muted-foreground">
-                          Esta comanda está vinculada ao QR escaneado na mesa. Não é necessário digitar o número.
+                          Seu pedido vai direto para a sua mesa.
                         </p>
                       </div>
                     ) : (

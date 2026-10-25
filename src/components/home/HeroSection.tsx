@@ -25,8 +25,8 @@ const HeroSection = ({
   eyebrow = "Fine dining",
   title = "Bem-vindo ao Nosso Restaurante",
   subtitle = "Experimente as melhores delícias culinárias com nosso cardápio cuidadosamente elaborado e serviço excepcional.",
-  ctaText = "Ver Cardápio",
-  secondaryCtaText = "Fazer Reserva",
+  ctaText = "Ver cardápio",
+  secondaryCtaText = "Reservar mesa",
   onCtaClick = () => {},
   onSecondaryCtaClick = () => {},
 }: HeroSectionProps) => {

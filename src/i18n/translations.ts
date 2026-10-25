@@ -24,17 +24,17 @@ const pt: TranslationTree = {
   },
   hero: {
     eyebrow: "São Paulo • Trattoria contemporânea • Forno a lenha",
-    title: "Bella Cucina, alma italiana, mesa brasileira",
+    title: "Alma italiana, mesa brasileira",
     subtitle:
-      "Da padronagem à sobremesa, celebramos o ritmo das casas italianas: produto honesto, calor humano e um pouco de teatro à mesa, sem perder a elegância.",
-    ctaMenu: "Ver Cardápio",
-    ctaReserve: "Fazer Reserva",
+      "Do antipasto à sobremesa, cozinha italiana de verdade: produto honesto, forno a lenha e um serviço caloroso, sem pressa.",
+    ctaMenu: "Ver cardápio",
+    ctaReserve: "Reservar mesa",
   },
   featured: {
     title: "Assinaturas da casa",
     subtitle: "Pratos que traduzem viagens por Piemonte, Emília, Campânia e Lazio, sempre com temporada brasileira.",
-    ctaFull: "Ver Cardápio Completo",
-    orderNow: "Pedir Agora",
+    ctaFull: "Ver cardápio completo",
+    orderNow: "Pedir agora",
   },
   gallery: {
     kicker: "Ambiente & oficina",
@@ -60,7 +60,7 @@ const pt: TranslationTree = {
       },
       degustacao: {
         title: "Menu degustação",
-        body: "Sete momentos com narrativa à mesa; maridaje opcional curado pela nossa sommelier.",
+        body: "Sete momentos com narrativa à mesa; harmonização opcional escolhida pela nossa sommelier.",
       },
       aperitivo: {
         title: "Aperitivo & bar",
@@ -79,7 +79,7 @@ const pt: TranslationTree = {
     name: "Chefia da casa",
     role: "Chefia da casa",
     imageChefAlt: "Chefia da casa em serviço",
-    imageKitchenAlt: "Cozinha aberta com equipas em serviço",
+    imageKitchenAlt: "Cozinha aberta com equipes em serviço",
     imageBrigadeAlt: "Brigada em preparo coletivo",
     brigadeCaption: "Passagem, calor controlado e mãos que conhecem cada panela.",
     valuesTitle: "O que não negociamos",
@@ -90,16 +90,16 @@ const pt: TranslationTree = {
   menu: {
     sectionTitle: "Carta completa",
     sectionDescription:
-      "Mais de vinte criações entre antipasti, primi, secondi, pizze al legna, dolci e bebidas, convidamos você a percorrer a Itália em pequenas porções de coragem.",
+      "Mais de 20 pratos entre antipasti, massas frescas, pizzas de forno a lenha, carnes, sobremesas e bebidas. Peça direto do celular.",
     qrTitle: "Peça da sua mesa",
     qrDescription:
-      "Escaneie o código QR na sua mesa para fazer seu pedido diretamente pelo celular",
-    featuredTitle: "Itens em Destaque",
+      "Aponte a câmera do celular para o QR code da mesa e faça o pedido sem esperar o garçom.",
+    featuredTitle: "Destaques",
     searchPlaceholder: "Buscar no cardápio...",
     viewGrid: "Grade",
     viewList: "Lista",
-    empty: "Nenhum item encontrado. Tente ajustar seus filtros.",
-    addToOrder: "Adicionar ao Pedido",
+    empty: "Nenhum prato encontrado. Tente outra palavra ou categoria.",
+    addToOrder: "Adicionar ao pedido",
     detailsHint: "Ver detalhes",
     category: {
       all: "Todos",

@@ -19,7 +19,7 @@ const MenuPageContent = () => {
             className="group inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-muted-foreground transition hover:text-foreground"
           >
             <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" aria-hidden />
-            Voltar para a experiência
+            Voltar ao início
           </Link>
         </div>
 
